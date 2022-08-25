@@ -1,30 +1,37 @@
-import { useEffect } from "react";
 import "./App.css";
 import {
-  getFlightsToDestination,
-  getHotelsByCity,
-} from "./services/amadeusService";
-import { getCityInfoById } from "./services/roadGoatService";
-import { getBusinessesByLocation } from "./services/yelpService";
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
+import Header from "./components/Header";
+import LandingPage from "./components/LandingPage";
+import PreferencesPage from "./components/PreferencesPage";
+import RecommendationPage from "./components/RecommendationPage";
+import CityDetails from "./components/CityDetails";
+import FavoritesPage from "./components/FavoritesPage";
+import PlanningPage from "./components/PlanningPage";
 
 function App() {
-  useEffect(() => {
-    getCityInfoById("6588544").then((response) => console.log(response.data));
-
-    getBusinessesByLocation("nyc").then((response) => {
-      console.log(response.businesses);
-    });
-
-    getFlightsToDestination("DTW", "CDG", "2022-11-01", 1).then((response) => {
-      console.log(response.data.data);
-    });
-
-    getHotelsByCity("PAR").then((response) => {
-      console.log(response.data);
-    });
-  }, []);
-
-  return <div className="App"></div>;
+  return (
+    <div className="App">
+      <Router>
+        <Header />
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/preferences" element={<PreferencesPage />} />
+          <Route path="/recommendations" element={<RecommendationPage />} />
+          <Route
+            path="/recommendations/:id/details"
+            element={<CityDetails />}
+          />
+          <Route path="/favorites" element={<FavoritesPage />} />
+          <Route path="plan-your-trip/:id" element={<PlanningPage />} />
+        </Routes>
+      </Router>
+    </div>
+  );
 }
 
 export default App;

@@ -1,8 +1,8 @@
 import axios from "axios";
 
 let token: string | null = null;
-const id: string = process.env.AMADEUS_ID || "";
-const secret: string = process.env.AMADEUS_SECRET || "";
+const id: string = process.env.REACT_APP_AMADEUS_ID || "";
+const secret: string = process.env.REACT_APP_AMADEUS_SECRET || "";
 
 const getAccessToken = async (): Promise<void> => {
   if (!token) {

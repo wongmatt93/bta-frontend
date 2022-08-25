@@ -1,7 +1,7 @@
 import axios from "axios";
 import SingleRoadGoatResponse from "../models/SingleRoadGoatResponse";
 
-const auth: string = process.env.ROADGOAT_AUTH || "";
+const auth: string = process.env.REACT_APP_ROADGOAT_AUTH || "";
 
 export const getCityInfoById = async (
   id: string

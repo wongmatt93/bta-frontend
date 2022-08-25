@@ -1,7 +1,7 @@
 import axios from "axios";
 import MultipleYelpResponse from "../models/MultipleYelpResponse";
 
-const key: string = process.env.YELP_API_KEY || "";
+const key: string = process.env.REACT_APP_YELP_API_KEY || "";
 
 export const getBusinessesByLocation = async (
   location: string
