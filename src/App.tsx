@@ -12,8 +12,14 @@ import RecommendationPage from "./components/RecommendationPage";
 import CityDetails from "./components/CityDetails";
 import FavoritesPage from "./components/FavoritesPage";
 import PlanningPage from "./components/PlanningPage";
+import { searchYelp } from "./services/yelpService";
+import { useEffect } from "react";
 
 function App() {
+  useEffect(() => {
+    searchYelp("detroit").then((response) => console.log(response));
+  }, []);
+
   return (
     <div className="App">
       <Router>
