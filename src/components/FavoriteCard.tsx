@@ -1,7 +1,11 @@
 import "./FavoriteCard.css";
 
-const FavoriteCard = () => {
-  return <div className="FavoriteCard">FavoriteCard works</div>;
+interface Props {
+  favorite: any;
+}
+
+const FavoriteCard = ({ favorite }: Props) => {
+  return <li className="FavoriteCard">{favorite}</li>;
 };
 
 export default FavoriteCard;
