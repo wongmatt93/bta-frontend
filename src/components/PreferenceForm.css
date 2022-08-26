@@ -1,0 +1,27 @@
+.PreferenceForm div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.PreferenceForm input {
+  appearance: none;
+  display: none;
+}
+
+.PreferenceForm label {
+  background-color: #efefef;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  text-align: center;
+  width: 84px;
+  height: 89px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5px;
+  flex-direction: column;
+}

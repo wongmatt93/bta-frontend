@@ -1,11 +1,14 @@
-import PreferenceList from "./PreferenceList";
+import PreferenceForm from "./PreferenceForm";
 import "./PreferencesPage.css";
 
 const PreferencesPage = () => {
   return (
-    <div className="PreferencesPage">
-      <PreferenceList />
-    </div>
+    <main className="PreferencesPage">
+      <h2>
+        Choose <div>your preferences</div>
+      </h2>
+      <PreferenceForm />
+    </main>
   );
 };
 

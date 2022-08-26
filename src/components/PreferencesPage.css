@@ -1,0 +1,12 @@
+.PreferencesPage h2 {
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 30px;
+  text-align: center;
+  border-bottom: 2px solid slategray;
+}
+
+.PreferencesPage div {
+  font-weight: bolder;
+}
