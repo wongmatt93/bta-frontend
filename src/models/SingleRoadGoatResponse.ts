@@ -1,5 +1,5 @@
-import City from "./City";
+import RoadGoatCity from "./RoadGoatCity";
 
 export default interface SingleRoadGoatResponse {
-  data: City;
+  data: RoadGoatCity;
 }
