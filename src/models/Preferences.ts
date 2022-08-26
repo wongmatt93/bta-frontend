@@ -13,7 +13,7 @@ export interface Preferences {
   hippie: boolean;
   posh: boolean;
   familyFriendly: boolean;
-  lgbtFriendly: boolean;
+  lgbtScene: boolean;
   diversity: boolean;
   beachTown: boolean;
   collegeTown: boolean;

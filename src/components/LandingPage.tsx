@@ -1,3 +1,4 @@
+import { signInWithGoogle } from "../firebaseConfig";
 import "./LandingPage.css";
 
 const LandingPage = () => {
@@ -6,7 +7,9 @@ const LandingPage = () => {
       <h2>Plan Your Nightmare Vacation</h2>
       <p>You're gunna have a bad time.</p>
       <div className="sign-in-button-container">
-        <button className="sign-in-button">Sign in with Google</button>
+        <button className="sign-in-button" onClick={signInWithGoogle}>
+          Sign in with Google
+        </button>
       </div>
     </main>
   );
