@@ -5,6 +5,7 @@ import { City } from "../models/City";
 import RoadGoatCity from "../models/RoadGoatCity";
 import { getCitiesByCountry } from "../services/cityService";
 import { getCityInfoByName } from "../services/roadGoatService";
+import RecommendationCard from "./RecommendationCard";
 import "./RecommendationPage.css";
 
 const RecommendationPage = () => {
@@ -59,9 +60,7 @@ const RecommendationPage = () => {
     <div className="RecommendationPage">
       {city && cityInfo && (
         <>
-          <img src={photo} alt={city.name} />
-          <h2>{city.name}</h2>
-          <p>Rating: {cityInfo.attributes.average_rating}</p>
+          <RecommendationCard name={city.name} info={cityInfo} photo={photo} />
           <button
             onClick={() =>
               addCityToVotedOn({
