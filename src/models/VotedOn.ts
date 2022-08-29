@@ -4,4 +4,5 @@ export default interface VotedOn {
   cityId: string;
   uid: string;
   favorite: boolean;
+  photo: string;
 }
