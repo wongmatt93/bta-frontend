@@ -4,7 +4,10 @@ import VotedOnContext from "../context/VotedOnContext";
 import { City } from "../models/City";
 import RoadGoatCity from "../models/RoadGoatCity";
 import { getCitiesByCountry } from "../services/cityService";
-import { getCityInfoByName } from "../services/roadGoatService";
+import {
+  getCityInfoById,
+  getCityInfoByName,
+} from "../services/roadGoatService";
 import RecommendationCard from "./RecommendationCard";
 import "./RecommendationPage.css";
 
@@ -13,6 +16,7 @@ const RecommendationPage = () => {
   const { votedOn, addCityToVotedOn } = useContext(VotedOnContext);
   const [photo, setPhoto] = useState("");
   const [cityInfo, setCityInfo] = useState<RoadGoatCity | null>(null);
+  const [moreCityInfo, setMoreCityInfo] = useState<RoadGoatCity | null>(null);
   const [city, setCity] = useState<City | null>(null);
   const [cities, setCities] = useState<City[]>([]);
 
@@ -56,11 +60,19 @@ const RecommendationPage = () => {
       });
   }, [city]);
 
+  useEffect(() => {
+    cityInfo &&
+      getCityInfoById(cityInfo.id).then((response) => {
+        setMoreCityInfo(response.data);
+      });
+  }, [cityInfo]);
+
   return (
     <div className="RecommendationPage">
-      {city && cityInfo && (
+      {city && moreCityInfo && (
         <>
-          <RecommendationCard name={city.name} info={cityInfo} photo={photo} />
+          <h2>Recommendations</h2>
+          <RecommendationCard city={city} info={moreCityInfo} photo={photo} />
           <button
             onClick={() =>
               addCityToVotedOn({

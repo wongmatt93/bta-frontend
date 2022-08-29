@@ -44,7 +44,7 @@ interface Type {
 }
 
 interface RelationshipInfo {
-  data: Type | Type[];
+  data: Type[];
 }
 
 interface Relationship {
