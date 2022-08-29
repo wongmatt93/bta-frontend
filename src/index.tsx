@@ -5,18 +5,21 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import AuthContextProvider from "./context/AuthContextProvider";
 import PreferencesContextProvider from "./context/PreferencesContextProvider";
+import VotedOnContextProvider from "./context/VotedOnContextProvider";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
-  <React.StrictMode>
-    <AuthContextProvider>
-      <PreferencesContextProvider>
+  // <React.StrictMode>
+  <AuthContextProvider>
+    <PreferencesContextProvider>
+      <VotedOnContextProvider>
         <App />
-      </PreferencesContextProvider>
-    </AuthContextProvider>
-  </React.StrictMode>
+      </VotedOnContextProvider>
+    </PreferencesContextProvider>
+  </AuthContextProvider>
+  // </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
