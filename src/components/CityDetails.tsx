@@ -46,6 +46,7 @@ const CityDetails = () => {
   const handleClick = (favorite: boolean): void => {
     addCityToVotedOn({
       cityName: name,
+      cityId: id!,
       uid: user!.uid,
       favorite: favorite,
     });

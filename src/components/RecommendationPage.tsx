@@ -31,6 +31,15 @@ const RecommendationPage = () => {
       );
     });
 
+  const handleClick = (favorite: boolean): void => {
+    addCityToVotedOn({
+      cityName: city!.name,
+      cityId: cityInfo!.id,
+      uid: user!.uid,
+      favorite: favorite,
+    });
+  };
+
   useEffect(() => {
     getAndSetCities("US");
   }, [votedOn]);
@@ -44,11 +53,7 @@ const RecommendationPage = () => {
     city &&
       getCityInfoByName(city.name).then((response) => {
         if (response.data[0] === undefined) {
-          addCityToVotedOn({
-            cityName: city.name,
-            uid: user!.uid,
-            favorite: false,
-          });
+          handleClick(false);
           getAndSetCities("US");
         } else if (response.data[0].attributes.destination_type === "State") {
           setCityInfo(response.data[1]);
@@ -73,28 +78,8 @@ const RecommendationPage = () => {
         <>
           <h2>Recommendations</h2>
           <RecommendationCard city={city} info={moreCityInfo} photo={photo} />
-          <button
-            onClick={() =>
-              addCityToVotedOn({
-                cityName: city.name,
-                uid: user!.uid,
-                favorite: true,
-              })
-            }
-          >
-            Upvote
-          </button>
-          <button
-            onClick={() =>
-              addCityToVotedOn({
-                cityName: city.name,
-                uid: user!.uid,
-                favorite: false,
-              })
-            }
-          >
-            Downvote
-          </button>
+          <button onClick={() => handleClick(true)}>Upvote</button>
+          <button onClick={() => handleClick(false)}>Downvote</button>
         </>
       )}
     </div>

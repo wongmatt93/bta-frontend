@@ -1,13 +1,17 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import VotedOnContext from "../context/VotedOnContext";
+import VotedOn from "../models/VotedOn";
 import FavoriteCard from "./FavoriteCard";
 import "./FavoritesList.css";
 
 const FavoritesList = () => {
-  const [favorites, setFavorites] = useState<string[]>([]);
+  const [favorites, setFavorites] = useState<VotedOn[]>([]);
+
+  const { votedOn } = useContext(VotedOnContext);
 
   useEffect(() => {
-    setFavorites(["detroit", "atlanta", "houston"]);
-  }, []);
+    setFavorites(votedOn.filter((item) => item.favorite));
+  }, [votedOn]);
 
   return (
     <ul className="FavoritesList">
