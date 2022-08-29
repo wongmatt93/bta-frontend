@@ -1,3 +1,5 @@
+import { City } from "../models/City";
+import { useNavigate } from "react-router-dom";
 import RoadGoatCity from "../models/RoadGoatCity";
 import "./RecommendationCard.css";
 
@@ -5,18 +7,28 @@ import "./RecommendationCard.css";
 // clicking gives details City Details
 
 interface Props {
-  name: string;
+  city: City;
   info: RoadGoatCity;
   photo: string;
 }
 
-const RecommendationCard = ({ name, info, photo }: Props) => {
-  console.log(info);
+const RecommendationCard = ({ city, info, photo }: Props) => {
+  const navigate = useNavigate();
+
+  const handleClick = (): void => {
+    navigate(`/recommendations/${info.id}/details`);
+  };
+
   return (
-    <div className="RecommendationCard">
-      <img src={photo} alt={name} />
-      <h2>{name}</h2>
-      <p>{info.attributes.name}</p>
+    <div className="RecommendationCard" onClick={handleClick}>
+      <img src={photo} alt={city.name} />
+      <div className="info-container">
+        <div>
+          <h3>{city.name}</h3>
+          <p>{city.country}</p>
+        </div>
+        <p>{info.attributes.average_rating.toFixed(1)}</p>
+      </div>
     </div>
   );
 };

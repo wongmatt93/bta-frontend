@@ -1,0 +1,18 @@
+.RecommendationCard {
+  width: 75%;
+  border: 1px solid pink;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.RecommendationCard img {
+  width: 100%;
+}
+
+.RecommendationCard .info-container {
+  width: 90%;
+  padding: 2%;
+  display: flex;
+  justify-content: space-between;
+}
