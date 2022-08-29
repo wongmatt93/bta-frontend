@@ -37,6 +37,7 @@ const RecommendationPage = () => {
       cityId: cityInfo!.id,
       uid: user!.uid,
       favorite: favorite,
+      photo,
     });
   };
 

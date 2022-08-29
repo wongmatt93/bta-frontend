@@ -54,6 +54,7 @@ const CityDetails = () => {
       cityId: id!,
       uid: user!.uid,
       favorite: favorite,
+      photo,
     });
     navigate("/recommendations");
   };

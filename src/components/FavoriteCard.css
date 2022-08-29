@@ -1,0 +1,10 @@
+.FavoriteCard {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.FavoriteCard img {
+  width: 75%;
+}
