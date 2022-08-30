@@ -5,7 +5,7 @@ import Hotel from "../models/Hotel";
 import SingleRoadGoatResponse from "../models/SingleRoadGoatResponse";
 import { getHotelsByCity } from "../services/amadeusService";
 import { getCityInfoById } from "../services/roadGoatService";
-import { searchYelp } from "../services/yelpService";
+import { searchYelpArts, searchYelpRestaurants } from "../services/yelpService";
 import "./PlanningPage.css";
 
 const PlanningPage = () => {
@@ -29,8 +29,11 @@ const PlanningPage = () => {
         details.data.attributes.latitude,
         details.data.attributes.longitude
       ).then((response) => setHotels(response.data));
-      searchYelp(details.data.attributes.name).then((response) =>
-        setRestaurants(response.businesses)
+      searchYelpRestaurants(details.data.attributes.name).then((response) =>
+        console.log(response.businesses)
+      );
+      searchYelpArts(details.data.attributes.name).then((response) =>
+        console.log(response.businesses)
       );
     }
   }, [details]);
