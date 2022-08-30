@@ -23,13 +23,13 @@ const PlanningPage = () => {
         details.data.attributes.latitude,
         details.data.attributes.longitude
       ).then((response) => {
-        return console.log(response.data);
+        return setHotels(response.data);
       });
   }, [details]);
 
-  useEffect(() => {
-    console.log(hotels);
-  }, [hotels]);
+  // useEffect(() => {
+  //   console.log(hotels);
+  // }, [hotels]);
 
   return (
     <main className="PlanningPage">
