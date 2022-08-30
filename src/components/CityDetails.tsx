@@ -27,7 +27,6 @@ const CityDetails = () => {
     id &&
       getCityInfoById(id).then((response) => {
         setDetails(response);
-        console.log(response);
       });
   }, [id]);
 

@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import AuthContext from "../context/AuthContext";
 import VotedOnContext from "../context/VotedOnContext";
-import { City } from "../models/City";
+import City from "../models/City";
 import RoadGoatCity from "../models/RoadGoatCity";
 import { getCitiesByCountry } from "../services/cityService";
 import {
