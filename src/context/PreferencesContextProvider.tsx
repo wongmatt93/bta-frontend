@@ -20,7 +20,7 @@ const PreferencesContextProvider = ({ children }: Props) => {
   };
 
   const addPreferences = (uid: string, preference: Preferences): void => {
-    addUserPreferences(uid, preference).then(() => {
+    addUserPreferences(preference).then(() => {
       getAndSetPreferences(uid);
     });
   };
