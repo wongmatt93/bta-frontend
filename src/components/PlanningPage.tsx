@@ -14,8 +14,7 @@ const PlanningPage = () => {
   const [hotel, setHotel] = useState<Hotel | null>(null);
   const [hotels, setHotels] = useState<Hotel[]>([]);
   const [restaurants, setRestaurants] = useState<Business[]>([]);
-  const [date1, setDate1] = useState("");
-  const [date2, setDate2] = useState("");
+  const [days, setDays] = useState("");
 
   useEffect(() => {
     id &&
@@ -98,22 +97,15 @@ const PlanningPage = () => {
   return (
     <main className="PlanningPage">
       <form onSubmit={(e) => handleSubmit(e)}>
-        <label htmlFor="days1">How many days?</label>
+        <label htmlFor="days">How many days?</label>
         <input
           type="date"
-          name="days1"
-          id="days1"
-          value={date1}
-          onChange={(e) => setDate1(e.target.value)}
+          name="days"
+          id="days"
+          value={days}
+          onChange={(e) => setDays(e.target.value)}
         />
-        <label htmlFor="days2">How many days?</label>
-        <input
-          type="date"
-          name="days2"
-          id="days2"
-          value={date2}
-          onChange={(e) => setDate2(e.target.value)}
-        />
+
         <button>Submit</button>
       </form>
       <h3>Your Hotel: {hotel?.name}</h3>
