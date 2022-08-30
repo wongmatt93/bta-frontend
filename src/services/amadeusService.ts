@@ -1,4 +1,5 @@
 import axios from "axios";
+import MultipleAmadeusResponse from "../models/MultipleAmadeusResponse";
 
 let token: string | null = null;
 const id: string = process.env.REACT_APP_AMADEUS_ID || "";
@@ -20,13 +21,16 @@ const getAccessToken = async (): Promise<void> => {
   }
 };
 
-export const getHotelsByCity = async (cityCode: string) => {
+export const getHotelsByCity = async (
+  latitude: number,
+  longitude: number
+): Promise<MultipleAmadeusResponse> => {
   await getAccessToken();
   return (
     await axios.get(
-      "https://test.api.amadeus.com/v1/reference-data/locations/hotels/by-city",
+      "https://test.api.amadeus.com/v1/reference-data/locations/hotels/by-geocode",
       {
-        params: { cityCode, ratings: "1,2" },
+        params: { latitude, longitude, ratings: "1,2" },
         headers: {
           Authorization: `Bearer ${token}`,
         },

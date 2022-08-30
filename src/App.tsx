@@ -12,6 +12,7 @@ import RecommendationPage from "./components/RecommendationPage";
 import CityDetails from "./components/CityDetails";
 import FavoritesPage from "./components/FavoritesPage";
 import PlanningPage from "./components/PlanningPage";
+import UserProfile from "./components/UserProfile";
 
 function App() {
   return (
@@ -27,7 +28,8 @@ function App() {
             element={<CityDetails />}
           />
           <Route path="/favorites" element={<FavoritesPage />} />
-          <Route path="plan-your-trip/:id" element={<PlanningPage />} />
+          <Route path="/plan-your-trip/:id" element={<PlanningPage />} />
+          <Route path="/user-profile" element={<UserProfile />} />
         </Routes>
       </Router>
     </div>

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { City } from "../models/City";
+import City from "../models/City";
 
 const auth: string = process.env.REACT_APP_CITY_API_KEY || "";
 

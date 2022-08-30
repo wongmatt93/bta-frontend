@@ -1,4 +1,4 @@
-import { City } from "../models/City";
+import City from "../models/City";
 import { useNavigate } from "react-router-dom";
 import RoadGoatCity from "../models/RoadGoatCity";
 import "./RecommendationCard.css";
