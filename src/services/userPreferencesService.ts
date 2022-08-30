@@ -9,7 +9,6 @@ export const getUserPreferencesByUid = async (
   (await axios.get(`${baseURL}/user_preferences`)).data;
 
 export const addUserPreferences = async (
-  uid: string,
   preferences: Preferences
 ): Promise<Preferences> =>
-  (await axios.post(`${baseURL}/user_preferences/${uid}`, preferences)).data;
+  (await axios.post(`${baseURL}/user_preferences/`, preferences)).data;
