@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
-import { signOut } from "../firebaseConfig";
 import "./Header.css";
 
 const Header = () => {
@@ -21,7 +20,7 @@ const Header = () => {
             <Link to="/favorites">
               <li>Favorites</li>
             </Link>
-            <Link to="">
+            <Link to="/planned-trips">
               <li>Planned Trips</li>
             </Link>
           </ul>

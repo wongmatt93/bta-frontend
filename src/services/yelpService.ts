@@ -19,3 +19,12 @@ export const searchYelpArts = async (
     })
   ).data;
 };
+export const searchYelpBreakfast = async (
+  location: string
+): Promise<MultipleYelpResponse> => {
+  return (
+    await axios.get(`${baseURL}/yelp/breakfast`, {
+      params: { location },
+    })
+  ).data;
+};
