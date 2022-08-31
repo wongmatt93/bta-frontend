@@ -21,7 +21,7 @@ const Header = () => {
             <Link to="/favorites">
               <li>Favorites</li>
             </Link>
-            <Link to="">
+            <Link to="/planned-trips">
               <li>Planned Trips</li>
             </Link>
           </ul>
