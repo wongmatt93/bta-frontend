@@ -1,4 +1,5 @@
 import { FormEvent, useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
 import PreferencesContext from "../context/PreferencesContext";
 import { Preferences } from "../models/Preferences";
@@ -6,6 +7,7 @@ import "./PreferenceForm.css";
 
 const PreferenceForm = () => {
   const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
   const { addPreferences } = useContext(PreferencesContext);
 
   const [charming, setCharming] = useState(false);
@@ -54,6 +56,7 @@ const PreferenceForm = () => {
       wineries,
       shopping,
     };
+    navigate("/recommendations");
     addPreferences(user!.uid, newPreference);
   };
 

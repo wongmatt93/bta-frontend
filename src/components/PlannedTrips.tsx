@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import AuthContext from "../context/AuthContext";
 import PlannedTrip from "../models/PlannedTrip";
 import { getScheduleByUid } from "../services/scheduleService";
+import PlannedTripCard from "./PlannedTripCard";
 import "./PlannedTrips.css";
 
 const PlannedTrips = () => {
@@ -14,9 +15,12 @@ const PlannedTrips = () => {
 
   return (
     <main className="PlannedTrips">
-      {trips.map((trip) => (
-        <h3>{trip._id.cityName}</h3>
-      ))}
+      <h2>Planned Trips</h2>
+      <ul>
+        {trips.map((trip) => (
+          <PlannedTripCard trip={trip} />
+        ))}
+      </ul>
     </main>
   );
 };
