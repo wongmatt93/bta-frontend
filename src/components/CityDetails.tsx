@@ -13,6 +13,7 @@ import "./CityDetails.css";
 // photo, rating, description, vote function, known for, extra information, don't do and food
 
 const CityDetails = () => {
+  const { votedOn } = useContext(VotedOnContext);
   const id: string | undefined = useParams().id;
   const { user } = useContext(AuthContext);
   const { addCityToVotedOn } = useContext(VotedOnContext);
@@ -73,8 +74,16 @@ const CityDetails = () => {
               </li>
             ))}
           </ul>
-          <button onClick={() => handleClick(true)}>Upvote</button>
-          <button onClick={() => handleClick(false)}>Downvote</button>
+          {!votedOn.some((item) => {
+            return item.cityId === id && item.favorite;
+          }) ? (
+            <>
+              <button onClick={() => handleClick(true)}>Upvote</button>
+              <button onClick={() => handleClick(false)}>Downvote</button>
+            </>
+          ) : (
+            <button>Get Itinerary</button>
+          )}
         </>
       )}
     </div>

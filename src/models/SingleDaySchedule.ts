@@ -5,7 +5,7 @@ export default interface SingleDaySchedule {
   dinner: string;
   event1: string;
   event2: string;
-  hotel?: string;
+  hotel?: string | null;
   date1: string;
   date2: string;
   uid: string;
