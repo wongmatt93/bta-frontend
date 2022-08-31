@@ -25,7 +25,10 @@ const RecommendationCard = ({ city, info, photo }: Props) => {
       <div className="info-container">
         <div>
           <h3>{city.name}</h3>
-          <p>{city.country}</p>
+          <p>
+            <i className="fa-solid fa-location-dot"></i>
+            {city.country}
+          </p>
         </div>
         <p>{info.attributes.average_rating.toFixed(1)}</p>
       </div>

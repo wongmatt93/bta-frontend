@@ -23,9 +23,10 @@
   justify-content: center;
   margin: 5px;
   flex-direction: column;
+  cursor: pointer;
 }
 
 input:checked + label {
-  border: 1px solid #f0b202;
+  border: 2px solid #f0b202;
   box-sizing: border-box;
 }

@@ -1,7 +1,81 @@
 .CityDetails {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: scroll;
 }
 
 .CityDetails img {
   width: 100%;
+  position: relative;
+}
+
+.CityDetails .name-rating-container {
+  width: 85%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.CityDetails h2 {
+  font-family: "Oswald", sans-serif;
+  font-size: 35px;
+  font-weight: 500;
+}
+
+.CityDetails p {
+  font-family: "Oswald", sans-serif;
+  font-size: 15px;
+}
+
+.CityDetails .summary {
+  font-family: "Meriweather", serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 20px;
+  width: 85%;
+}
+
+.CityDetails ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 85%;
+}
+
+.CityDetails li {
+  font-family: "Roboto", sans-serif;
+  background: #ededed;
+  border-radius: 20px;
+  text-align: center;
+  margin: 5px;
+  padding: 5px 10px;
+}
+
+.CityDetails .thumbs-container {
+  position: absolute;
+  right: 5px;
+  color: white;
+}
+
+.CityDetails .fa-thumbs-up {
+  font-size: 40px;
+  cursor: pointer;
+  margin: 5px 10px;
+}
+
+.CityDetails .thumbs-up:hover {
+  transform: scale(1.2);
+  transition: 0.5s ease;
+}
+
+.CityDetails .thumbs-down:hover {
+  transform: scale(1.2) rotate(180deg);
+  transition: 0.5s ease;
+}
+
+.CityDetails .thumbs-down {
+  transform: rotate(180deg);
 }

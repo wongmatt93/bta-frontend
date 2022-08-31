@@ -64,23 +64,30 @@ const CityDetails = () => {
       {details && (
         <>
           <img src={photo} alt={details.data.attributes.name} />
-          <h2>{details.data.attributes.name}</h2>
-          <p>{details.data.attributes.average_rating.toFixed(1)}</p>
-          <p>{summary}</p>
+          <div className="name-rating-container">
+            {" "}
+            <h2>{details.data.attributes.name}</h2>
+            <p>{details.data.attributes.average_rating.toFixed(1)}</p>
+          </div>
+          <p className="summary">{summary}</p>
           <ul>
             {knownFor.map((item, index) => (
-              <li key={index}>
-                <p>{item.attributes.name}</p>
-              </li>
+              <li key={index}>{item.attributes.name}</li>
             ))}
           </ul>
           {!votedOn.some((item) => {
             return item.cityId === id && item.favorite;
           }) ? (
-            <>
-              <button onClick={() => handleClick(true)}>Upvote</button>
-              <button onClick={() => handleClick(false)}>Downvote</button>
-            </>
+            <div className="thumbs-container">
+              <i
+                className="fa-solid fa-thumbs-up thumbs-up"
+                onClick={() => handleClick(true)}
+              ></i>
+              <i
+                className="fa-solid fa-thumbs-up thumbs-down"
+                onClick={() => handleClick(false)}
+              ></i>
+            </div>
           ) : (
             <button onClick={() => navigate(`/plan-your-trip/${id}`)}>
               Get Itinerary

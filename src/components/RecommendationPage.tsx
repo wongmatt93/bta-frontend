@@ -79,8 +79,16 @@ const RecommendationPage = () => {
         <>
           <h2>Recommendations</h2>
           <RecommendationCard city={city} info={moreCityInfo} photo={photo} />
-          <button onClick={() => handleClick(true)}>Upvote</button>
-          <button onClick={() => handleClick(false)}>Downvote</button>
+          <div className="thumbs-container">
+            <i
+              className="fa-solid fa-thumbs-up thumbs-up"
+              onClick={() => handleClick(true)}
+            ></i>
+            <i
+              className="fa-solid fa-thumbs-up thumbs-down"
+              onClick={() => handleClick(false)}
+            ></i>
+          </div>
         </>
       )}
     </div>
