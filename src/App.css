@@ -15,3 +15,15 @@ li {
   flex-direction: column;
   height: 100vh;
 }
+
+.App button {
+  cursor: pointer;
+}
+
+.App h2 {
+  font-family: "Roboto", sans-serif;
+}
+
+.App h3 {
+  font-family: "Oswald", sans-serif;
+}
