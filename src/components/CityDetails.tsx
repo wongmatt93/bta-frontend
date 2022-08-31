@@ -82,7 +82,9 @@ const CityDetails = () => {
               <button onClick={() => handleClick(false)}>Downvote</button>
             </>
           ) : (
-            <button>Get Itinerary</button>
+            <button onClick={() => navigate(`/plan-your-trip/${id}`)}>
+              Get Itinerary
+            </button>
           )}
         </>
       )}

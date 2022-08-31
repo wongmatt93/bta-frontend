@@ -1,5 +1,5 @@
 import { FormEvent, useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
 import Business from "../models/Business";
 import Hotel from "../models/Hotel";
@@ -17,6 +17,7 @@ import "./PlanningPage.css";
 
 const PlanningPage = () => {
   const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
   const id: string | undefined = useParams().id;
   const [details, setDetails] = useState<SingleRoadGoatResponse | null>(null);
   const [hotel, setHotel] = useState<Hotel | null>(null);
@@ -108,15 +109,22 @@ const PlanningPage = () => {
             dinner: restaurants[dinnerIndex].name,
             event1: events[eventOneIndex].name,
             event2: events[eventTwoIndex].name,
-            // hotel: duration > 1 ? hotel!.name : null,
+            hotel: duration > 1 ? hotel!.name : null,
             date1,
             date2,
             uid: user!.uid,
             cityName: details!.data.attributes.name,
           });
-          alert(`${restaurants[index].name}`);
+          alert(`Day ${i + 1}
+          Breakfast: ${breakfast[index].name}
+          Event 1: ${events[eventOneIndex].name}
+          Lunch: ${restaurants[lunchIndex].name}
+          Event 2: ${events[eventTwoIndex].name}
+          Dinner: ${restaurants[dinnerIndex].name}
+          `);
         }
       }
+      navigate("/planned-trips");
     } else {
       alert("error");
     }

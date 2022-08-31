@@ -14,8 +14,12 @@ import FavoritesPage from "./components/FavoritesPage";
 import PlanningPage from "./components/PlanningPage";
 import UserProfile from "./components/UserProfile";
 import PlannedTrips from "./components/PlannedTrips";
+import { useContext } from "react";
+import AuthContext from "./context/AuthContext";
 
 function App() {
+  const { user } = useContext(AuthContext);
+
   return (
     <div className="App">
       <Router>
@@ -32,6 +36,7 @@ function App() {
           <Route path="/plan-your-trip/:id" element={<PlanningPage />} />
           <Route path="/user-profile" element={<UserProfile />} />
           <Route path="/planned-trips" element={<PlannedTrips />} />
+          <Route path="*" element={<Navigate to="/recommendations" />} />
         </Routes>
       </Router>
     </div>
