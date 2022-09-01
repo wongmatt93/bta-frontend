@@ -3,6 +3,7 @@ import { useState } from "react";
 import ReactDOM from "react-dom";
 import Modal from "react-modal";
 import SingleDaySchedule from "../models/SingleDaySchedule";
+import SingleDayItinerary from "./SingleDayItinerary";
 Modal.setAppElement("#root");
 
 interface Props {
@@ -27,10 +28,10 @@ const PlannedTripItinerary = ({ itinerary }: Props) => {
         onRequestClose={closeModal}
         contentLabel="Example Modal"
       >
-        <button onClick={closeModal}>close</button>
         {itinerary.map((item, index) => (
-          <p key={index}>{item.breakfast}</p>
+          <SingleDayItinerary schedule={item} index={index} key={index} />
         ))}
+        <button onClick={closeModal}>close</button>
       </Modal>
     </div>
   );
