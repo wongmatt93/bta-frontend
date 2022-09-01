@@ -26,8 +26,8 @@ const PlannedTripCard = ({ trip }: Props) => {
       <h4>
         {trip._id.date1} - {trip._id.date2}
       </h4>
-      {itinerary.map((item) => (
-        <p>{item.breakfast}</p>
+      {itinerary.map((item, index) => (
+        <p key={index}>{item.breakfast}</p>
       ))}
     </li>
   );

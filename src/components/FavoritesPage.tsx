@@ -3,9 +3,9 @@ import "./FavoritesPage.css";
 
 const FavoritesPage = () => {
   return (
-    <div className="FavoritesPage">
+    <main className="FavoritesPage">
       <FavoritesList />
-    </div>
+    </main>
   );
 };
 

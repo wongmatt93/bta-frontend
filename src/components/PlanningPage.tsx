@@ -132,6 +132,7 @@ const PlanningPage = () => {
 
   return (
     <main className="PlanningPage">
+      <h2>Please enter the dates for your trip</h2>
       <form onSubmit={(e) => handleSubmit(e)}>
         <label htmlFor="date1">Start Date</label>
         <input
@@ -153,10 +154,6 @@ const PlanningPage = () => {
 
         <button>Submit</button>
       </form>
-      <h3>Your Hotel: {hotel?.name}</h3>
-      {restaurants.map((restaurant) => (
-        <div key={restaurant.id}>{restaurant.name}</div>
-      ))}
     </main>
   );
 };

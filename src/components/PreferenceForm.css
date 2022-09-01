@@ -1,3 +1,10 @@
+.PreferenceForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 85%;
+}
+
 .PreferenceForm div {
   display: flex;
   flex-wrap: wrap;
@@ -9,11 +16,11 @@
 }
 
 .PreferenceForm label {
-  background-color: #f5f5f5;
+  background-color: #e6e6e6;
   font-family: "Roboto";
   font-style: normal;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 12px;
   text-align: center;
   width: 84px;
   height: 89px;
@@ -29,4 +36,16 @@
 input:checked + label {
   border: 2px solid #f0b202;
   box-sizing: border-box;
+}
+
+.PreferenceForm button {
+  width: 287px;
+  height: 68px;
+  background: #f0b202;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+  border: none;
+  font-family: "Oswald", sans-serif;
+  font-size: 24px;
+  margin: 20px;
 }

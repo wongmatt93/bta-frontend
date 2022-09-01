@@ -17,8 +17,8 @@ const PlannedTrips = () => {
     <main className="PlannedTrips">
       <h2>Planned Trips</h2>
       <ul>
-        {trips.map((trip) => (
-          <PlannedTripCard trip={trip} />
+        {trips.map((trip, index) => (
+          <PlannedTripCard trip={trip} key={index} />
         ))}
       </ul>
     </main>
