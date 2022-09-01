@@ -105,23 +105,21 @@ const PlanningPage = () => {
           );
           addSchedule({
             breakfast: breakfast[index].name,
+            breakfastPhoto: breakfast[index].image_url,
             lunch: restaurants[lunchIndex].name,
+            lunchPhoto: restaurants[lunchIndex].image_url,
             dinner: restaurants[dinnerIndex].name,
+            dinnerPhoto: restaurants[dinnerIndex].image_url,
             event1: events[eventOneIndex].name,
+            event1Photo: events[eventOneIndex].image_url,
             event2: events[eventTwoIndex].name,
-            hotel: duration > 1 ? hotel!.name : null,
+            event2Photo: events[eventTwoIndex].image_url,
+            // hotel: duration > 1 ? hotel!.name : null,
             date1,
             date2,
             uid: user!.uid,
             cityName: details!.data.attributes.name,
           });
-          alert(`Day ${i + 1}
-          Breakfast: ${breakfast[index].name}
-          Event 1: ${events[eventOneIndex].name}
-          Lunch: ${restaurants[lunchIndex].name}
-          Event 2: ${events[eventTwoIndex].name}
-          Dinner: ${restaurants[dinnerIndex].name}
-          `);
         }
       }
       navigate("/planned-trips");
