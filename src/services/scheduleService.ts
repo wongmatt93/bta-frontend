@@ -20,3 +20,12 @@ export const addSchedule = async (
   schedule: SingleDaySchedule
 ): Promise<SingleDaySchedule> =>
   (await axios.post(`${baseURL}/schedule`, schedule)).data;
+
+export const deleteFullItinerary = async (
+  itinerary: PlannedTrip
+): Promise<void> =>
+  (
+    await axios.delete(
+      `${baseURL}/schedule/${itinerary._id.uid}/${itinerary._id.date1}/${itinerary._id.date2}/${itinerary._id.cityName}`
+    )
+  ).data;

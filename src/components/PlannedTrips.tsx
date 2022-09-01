@@ -1,3 +1,4 @@
+import { User } from "firebase/auth";
 import { useContext, useEffect, useState } from "react";
 import AuthContext from "../context/AuthContext";
 import PlannedTrip from "../models/PlannedTrip";
@@ -9,8 +10,11 @@ const PlannedTrips = () => {
   const [trips, setTrips] = useState<PlannedTrip[]>([]);
   const { user } = useContext(AuthContext);
 
+  const getAndSetTrips = (user: User) => {
+    getScheduleByUid(user.uid).then((response) => setTrips(response));
+  };
   useEffect(() => {
-    user && getScheduleByUid(user.uid).then((response) => setTrips(response));
+    user && getAndSetTrips(user);
   }, [user]);
 
   return (
@@ -18,7 +22,11 @@ const PlannedTrips = () => {
       <h2>Planned Trips</h2>
       <ul>
         {trips.map((trip, index) => (
-          <PlannedTripCard trip={trip} key={index} />
+          <PlannedTripCard
+            trip={trip}
+            key={index}
+            getAndSetTrips={getAndSetTrips}
+          />
         ))}
       </ul>
     </main>

@@ -28,3 +28,6 @@ export const searchYelpBreakfast = async (
     })
   ).data;
 };
+export const searchYelpBusiness = async (id: string) => {
+  return (await axios.get(`${baseURL}/yelp/business/${id}`)).data;
+};
