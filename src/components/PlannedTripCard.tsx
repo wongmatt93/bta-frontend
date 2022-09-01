@@ -3,6 +3,7 @@ import PlannedTrip from "../models/PlannedTrip";
 import SingleDaySchedule from "../models/SingleDaySchedule";
 import { getFullItinerary } from "../services/scheduleService";
 import "./PlannedTripCard.css";
+import PlannedTripItinerary from "./PlannedTripItinerary";
 
 interface Props {
   trip: PlannedTrip;
@@ -26,9 +27,7 @@ const PlannedTripCard = ({ trip }: Props) => {
       <h4>
         {trip._id.date1} - {trip._id.date2}
       </h4>
-      {itinerary.map((item, index) => (
-        <p key={index}>{item.breakfast}</p>
-      ))}
+      <PlannedTripItinerary itinerary={itinerary} />
     </li>
   );
 };
