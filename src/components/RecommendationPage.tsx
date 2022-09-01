@@ -74,7 +74,7 @@ const RecommendationPage = () => {
   }, [cityInfo]);
 
   return (
-    <div className="RecommendationPage">
+    <main className="RecommendationPage">
       {city && moreCityInfo && (
         <>
           <h2>Recommendations</h2>
@@ -91,7 +91,7 @@ const RecommendationPage = () => {
           </div>
         </>
       )}
-    </div>
+    </main>
   );
 };
 

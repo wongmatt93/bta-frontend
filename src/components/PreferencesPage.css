@@ -1,21 +1,21 @@
+.PreferencesPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .PreferencesPage h2 {
   font-family: "Roboto", sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 30px;
   text-align: center;
-  border-bottom: 2px solid slategray;
+  border-bottom: 1px solid lightgray;
+  width: 85%;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .PreferencesPage div {
   font-weight: bolder;
-}
-
-.PreferencesPage button {
-  width: 287px;
-  height: 68px;
-  background: #f0b202;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 15px;
-  border: none;
 }
