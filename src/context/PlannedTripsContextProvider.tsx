@@ -1,4 +1,4 @@
-import { ReactNode, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import PlannedTrip from "../models/PlannedTrip";
 import {
   deleteFullItinerary,
@@ -12,6 +12,8 @@ interface Props {
 
 export const PlannedTripsContextProvider = ({ children }: Props) => {
   const [trips, setTrips] = useState<PlannedTrip[]>([]);
+  const [pastTrips, setPastTrips] = useState<PlannedTrip[]>([]);
+  const [futureTrips, setFutureTrips] = useState<PlannedTrip[]>([]);
 
   const getAndSetTrips = (uid: string) => {
     getScheduleByUid(uid).then((response) => setTrips(response));
@@ -21,9 +23,31 @@ export const PlannedTripsContextProvider = ({ children }: Props) => {
     deleteFullItinerary(trip).then(() => getAndSetTrips(uid));
   };
 
+  useEffect(() => {
+    let today: Date = new Date();
+    const dd = String(today.getDate()).padStart(2, "0");
+    const mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
+    const yyyy = today.getFullYear();
+    today = new Date(yyyy + "-" + mm + "-" + dd);
+
+    setPastTrips(
+      trips.filter((trip) => {
+        const endDate = new Date(trip._id.date2);
+        return today.getTime() - endDate.getTime() >= 0;
+      })
+    );
+
+    setFutureTrips(
+      trips.filter((trip) => {
+        const endDate = new Date(trip._id.date2);
+        return today.getTime() - endDate.getTime() < 0;
+      })
+    );
+  }, [trips]);
+
   return (
     <PlannedTripsContext.Provider
-      value={{ trips, getAndSetTrips, deleteFullTrip }}
+      value={{ trips, pastTrips, futureTrips, getAndSetTrips, deleteFullTrip }}
     >
       {children}
     </PlannedTripsContext.Provider>

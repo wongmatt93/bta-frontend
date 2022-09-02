@@ -64,11 +64,13 @@ const CityDetails = ({ id }: Props) => {
     <div className="CityDetails">
       {details && (
         <>
-          <img
-            className="details-img"
-            src={photo}
-            alt={details.data.attributes.name}
-          />
+          <div className="image-container">
+            <img
+              className="details-img"
+              src={photo}
+              alt={details.data.attributes.name}
+            />
+          </div>
           <div className="info-container">
             <div className="name-rating-container">
               {" "}
