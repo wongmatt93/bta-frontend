@@ -6,6 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import AuthContextProvider from "./context/AuthContextProvider";
 import PreferencesContextProvider from "./context/PreferencesContextProvider";
 import VotedOnContextProvider from "./context/VotedOnContextProvider";
+import { PlannedTripsContextProvider } from "./context/PlannedTripsContextProvider";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -15,7 +16,9 @@ root.render(
   <AuthContextProvider>
     <PreferencesContextProvider>
       <VotedOnContextProvider>
-        <App />
+        <PlannedTripsContextProvider>
+          <App />
+        </PlannedTripsContextProvider>
       </VotedOnContextProvider>
     </PreferencesContextProvider>
   </AuthContextProvider>

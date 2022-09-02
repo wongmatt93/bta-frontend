@@ -1,6 +1,7 @@
 import { FormEvent, useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
+import { PlannedTripsContext } from "../context/PlannedTripsContext";
 import Business from "../models/Business";
 import Hotel from "../models/Hotel";
 import PlannedTrip from "../models/PlannedTrip";
@@ -17,6 +18,7 @@ import "./PlanningPage.css";
 
 const PlanningPage = () => {
   const { user } = useContext(AuthContext);
+  const { getAndSetTrips } = useContext(PlannedTripsContext);
   const navigate = useNavigate();
   const id: string | undefined = useParams().id;
   const [details, setDetails] = useState<SingleRoadGoatResponse | null>(null);
@@ -119,7 +121,7 @@ const PlanningPage = () => {
             date2,
             uid: user!.uid,
             cityName: details!.data.attributes.name,
-          });
+          }).then(() => getAndSetTrips(user!.uid));
         }
       }
       navigate("/planned-trips");
