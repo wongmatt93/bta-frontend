@@ -2,6 +2,7 @@ import { FormEvent, useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
 import { PlannedTripsContext } from "../context/PlannedTripsContext";
+import VotedOnContext from "../context/VotedOnContext";
 import Business from "../models/Business";
 import Hotel from "../models/Hotel";
 import PlannedTrip from "../models/PlannedTrip";
@@ -29,12 +30,17 @@ const PlanningPage = () => {
   const [events, setEvents] = useState<Business[]>([]);
   const [date1, setDate1] = useState("");
   const [date2, setDate2] = useState("");
+  const [cityPhoto, setCityPhoto] = useState("");
+
+  const { votedOn } = useContext(VotedOnContext);
 
   useEffect(() => {
-    id &&
+    if (id) {
       getCityInfoById(id).then((response) => {
         setDetails(response);
       });
+      setCityPhoto(votedOn.find((item) => id === item.cityId)!.photo);
+    }
   }, [id]);
 
   useEffect(() => {
@@ -121,6 +127,7 @@ const PlanningPage = () => {
             date2,
             uid: user!.uid,
             cityName: details!.data.attributes.name,
+            cityPhoto,
           }).then(() => getAndSetTrips(user!.uid));
         }
       }

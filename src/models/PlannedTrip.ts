@@ -3,6 +3,7 @@ interface Detail {
   date2: string;
   cityName: string;
   uid: string;
+  cityPhoto: string;
 }
 
 export default interface PlannedTrip {

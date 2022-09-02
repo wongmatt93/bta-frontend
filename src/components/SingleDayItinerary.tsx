@@ -1,6 +1,4 @@
-import { useEffect, useState } from "react";
 import SingleDaySchedule from "../models/SingleDaySchedule";
-import { searchYelpBusiness } from "../services/yelpService";
 import "./SingleDayItinerary.css";
 
 interface Props {
@@ -9,20 +7,29 @@ interface Props {
 }
 
 const SingleDayItinerary = ({ schedule, index }: Props) => {
-  const [breakfastPhoto, setBreakfastPhoto] = useState("");
   return (
     <div className="SingleDayItinerary">
-      <h3>Day {index + 1}</h3>
-      <p>Breakfast: {schedule.breakfast}</p>
-      <img src={schedule.breakfastPhoto} alt="" />
-      <p>Event 1: {schedule.event1}</p>
-      <img src={schedule.event1Photo} alt="" />
-      <p>Lunch: {schedule.lunch}</p>
-      <img src={schedule.lunchPhoto} alt="" />
-      <p>Event 2: {schedule.event2}</p>
-      <img src={schedule.event2Photo} alt="" />
-      <p>Dinner: {schedule.dinner}</p>
-      <img src={schedule.dinnerPhoto} alt="" />
+      <h3>DAY {index + 1}</h3>
+      <p>BREAKFAST - {schedule.breakfast}</p>
+      <div className="img-container">
+        <img src={schedule.breakfastPhoto} alt="" />
+      </div>
+      <p>ACTIVITY - {schedule.event1}</p>
+      <div className="img-container">
+        <img src={schedule.event1Photo} alt="" />
+      </div>
+      <p>LUNCH - {schedule.lunch}</p>
+      <div className="img-container">
+        <img src={schedule.lunchPhoto} alt="" />
+      </div>
+      <p>ACTIVITY - {schedule.event2}</p>
+      <div className="img-container">
+        <img src={schedule.event2Photo} alt="" />
+      </div>
+      <p>DINNER - {schedule.dinner}</p>
+      <div className="img-container">
+        <img src={schedule.dinnerPhoto} alt="" />
+      </div>
     </div>
   );
 };
