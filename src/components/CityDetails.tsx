@@ -10,11 +10,12 @@ import {
 import { getWikiSummary } from "../services/wikipediaService";
 import "./CityDetails.css";
 
-// photo, rating, description, vote function, known for, extra information, don't do and food
+interface Props {
+  id: string | undefined;
+}
 
-const CityDetails = () => {
+const CityDetails = ({ id }: Props) => {
   const { votedOn } = useContext(VotedOnContext);
-  const id: string | undefined = useParams().id;
   const { user } = useContext(AuthContext);
   const { addCityToVotedOn } = useContext(VotedOnContext);
   const navigate = useNavigate();
@@ -63,36 +64,42 @@ const CityDetails = () => {
     <div className="CityDetails">
       {details && (
         <>
-          <img src={photo} alt={details.data.attributes.name} />
-          <div className="name-rating-container">
-            {" "}
-            <h2>{details.data.attributes.name}</h2>
-            <p>{details.data.attributes.average_rating.toFixed(1)}</p>
-          </div>
-          <p className="summary">{summary}</p>
-          <ul>
-            {knownFor.map((item, index) => (
-              <li key={index}>{item.attributes.name}</li>
-            ))}
-          </ul>
-          {!votedOn.some((item) => {
-            return item.cityId === id && item.favorite;
-          }) ? (
-            <div className="thumbs-container">
-              <i
-                className="fa-solid fa-thumbs-up thumbs-up"
-                onClick={() => handleClick(true)}
-              ></i>
-              <i
-                className="fa-solid fa-thumbs-up thumbs-down"
-                onClick={() => handleClick(false)}
-              ></i>
+          <img
+            className="details-img"
+            src={photo}
+            alt={details.data.attributes.name}
+          />
+          <div className="info-container">
+            <div className="name-rating-container">
+              {" "}
+              <h2>{details.data.attributes.name}</h2>
+              <p>{details.data.attributes.average_rating.toFixed(1)}</p>
             </div>
-          ) : (
-            <button onClick={() => navigate(`/plan-your-trip/${id}`)}>
-              Get Itinerary
-            </button>
-          )}
+            <p className="summary">{summary}</p>
+            <ul>
+              {knownFor.map((item, index) => (
+                <li key={index}>{item.attributes.name}</li>
+              ))}
+            </ul>
+            {!votedOn.some((item) => {
+              return item.cityId === id && item.favorite;
+            }) ? (
+              <div className="details-thumbs-container">
+                <i
+                  className="fa-solid fa-thumbs-up thumbs-up"
+                  onClick={() => handleClick(true)}
+                ></i>
+                <i
+                  className="fa-solid fa-thumbs-up thumbs-down"
+                  onClick={() => handleClick(false)}
+                ></i>
+              </div>
+            ) : (
+              <button onClick={() => navigate(`/plan-your-trip/${id}`)}>
+                Get Itinerary
+              </button>
+            )}
+          </div>
         </>
       )}
     </div>

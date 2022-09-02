@@ -36,3 +36,16 @@
 .RecommendationPage .thumbs-down {
   transform: rotate(180deg);
 }
+
+.RecommendationPage .CityDetails {
+  display: none;
+}
+@media only screen and (min-width: 768px) {
+  .RecommendationPage .mobile-view {
+    display: none;
+  }
+
+  .RecommendationPage .CityDetails {
+    display: flex;
+  }
+}
