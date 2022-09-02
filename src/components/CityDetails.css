@@ -5,7 +5,7 @@
   align-items: center;
 }
 
-.CityDetails img {
+.CityDetails .details-img {
   width: 100%;
   position: relative;
 }
@@ -54,9 +54,9 @@
   padding: 5px 10px;
 }
 
-.CityDetails .thumbs-container {
+.CityDetails .details-thumbs-container {
   position: absolute;
-  right: 5px;
+  /* right: 5px; */
   color: white;
 }
 
@@ -91,4 +91,16 @@
   border: none;
   font-family: "Oswald", sans-serif;
   font-size: 24px;
+}
+
+@media only screen and (min-width: 768px) {
+  .CityDetails {
+    flex-direction: row;
+  }
+  .CityDetails .details-img {
+    width: 50%;
+  }
+  .CityDetails .info-container {
+    width: 50%;
+  }
 }

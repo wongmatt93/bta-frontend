@@ -1,10 +1,13 @@
+import { useParams } from "react-router-dom";
 import CityDetails from "./CityDetails";
 import "./CityDetailsPage.css";
 
 const CityDetailsPage = () => {
+  const id: string | undefined = useParams().id;
+
   return (
     <main className="CityDetailsPage">
-      <CityDetails />
+      <CityDetails id={id} />
     </main>
   );
 };

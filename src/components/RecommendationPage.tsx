@@ -8,6 +8,7 @@ import {
   getCityInfoById,
   getCityInfoByName,
 } from "../services/roadGoatService";
+import CityDetails from "./CityDetails";
 import RecommendationCard from "./RecommendationCard";
 import "./RecommendationPage.css";
 
@@ -78,17 +79,20 @@ const RecommendationPage = () => {
       {city && moreCityInfo && (
         <>
           <h2>Recommendations</h2>
-          <RecommendationCard city={city} info={moreCityInfo} photo={photo} />
-          <div className="thumbs-container">
-            <i
-              className="fa-solid fa-thumbs-up thumbs-up"
-              onClick={() => handleClick(true)}
-            ></i>
-            <i
-              className="fa-solid fa-thumbs-up thumbs-down"
-              onClick={() => handleClick(false)}
-            ></i>
+          <div className="mobile-view">
+            <RecommendationCard city={city} info={moreCityInfo} photo={photo} />
+            <div className="thumbs-container">
+              <i
+                className="fa-solid fa-thumbs-up thumbs-up"
+                onClick={() => handleClick(true)}
+              ></i>
+              <i
+                className="fa-solid fa-thumbs-up thumbs-down"
+                onClick={() => handleClick(false)}
+              ></i>
+            </div>
           </div>
+          <CityDetails id={cityInfo!.id} />
         </>
       )}
     </main>

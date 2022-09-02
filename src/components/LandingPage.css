@@ -1,7 +1,7 @@
 .LandingPage {
   flex: 1;
-  background-image: url("/public/assets/landing_background.jpg");
-  background-repeat: no-repeat;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("/public/assets/landing_background.jpg");
   background-position: center;
   background-size: 150%;
   margin-top: 0 !important;
@@ -49,4 +49,38 @@
   font-weight: 400;
   font-size: 20px;
   border: none;
+}
+
+@media only screen and (min-width: 768px) {
+  .LandingPage {
+    display: flex;
+    align-items: center;
+  }
+
+  .LandingPage h2 {
+    flex: 2;
+    margin: 20px;
+    text-align: center;
+  }
+  .LandingPage .button-p-container {
+    flex: 1;
+    background-color: white;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .LandingPage .button-p-container p {
+    color: black;
+  }
+  .LandingPage .sign-in-button-container {
+    position: relative;
+    background-color: transparent;
+  }
+  .LandingPage .sign-in-button {
+    background: #f0b202;
+    margin: 10px;
+  }
 }
