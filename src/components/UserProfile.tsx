@@ -26,7 +26,16 @@ const UserProfile = () => {
           <nav>
             <ul>
               <Link to="/preferences">
-                <li>Update Preferences</li>
+                <li className="bordered-li">
+                  <span>Update Preferences </span>
+                  <i className="fa-solid fa-angle-right"></i>
+                </li>
+              </Link>
+              <Link to="/past-trips">
+                <li>
+                  <span>See Past Trips</span>
+                  <i className="fa-solid fa-angle-right"></i>
+                </li>
               </Link>
             </ul>
           </nav>

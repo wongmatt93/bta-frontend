@@ -5,17 +5,46 @@
 }
 
 .UserProfile img {
-  height: 150px;
+  height: 125px;
   border-radius: 50%;
 }
 
 .UserProfile h2 {
-  font-family: "Meriwether", serif;
+  font-family: "Merriweather", serif;
+  margin-top: 15px;
 }
 
 .UserProfile nav {
   width: 85%;
   text-align: left;
+  display: flex;
+  justify-content: center;
+  font-family: "Roboto", sans-serif;
+  font-size: 20px;
+}
+
+.UserProfile ul {
+  width: 85%;
+}
+
+.UserProfile a {
+  color: black;
+  text-decoration: none;
+}
+
+.UserProfile li {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.UserProfile .bordered-li {
+  border-bottom: 2px solid #e6e6e6;
+  padding-bottom: 15px;
+}
+
+.UserProfile i {
+  color: #f0b202;
 }
 
 .UserProfile button {

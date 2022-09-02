@@ -8,7 +8,7 @@ import PlannedTripCard from "./PlannedTripCard";
 import "./PlannedTrips.css";
 
 const PlannedTrips = () => {
-  const { trips, getAndSetTrips } = useContext(PlannedTripsContext);
+  const { futureTrips, getAndSetTrips } = useContext(PlannedTripsContext);
   const { user } = useContext(AuthContext);
 
   useEffect(() => {
@@ -19,7 +19,7 @@ const PlannedTrips = () => {
     <main className="PlannedTrips">
       <h2>Planned Trips</h2>
       <ul>
-        {trips.map((trip, index) => (
+        {futureTrips.map((trip, index) => (
           <PlannedTripCard trip={trip} key={index} />
         ))}
       </ul>
