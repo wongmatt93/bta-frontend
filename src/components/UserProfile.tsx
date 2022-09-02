@@ -1,11 +1,21 @@
-import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
 import { signOut } from "../firebaseConfig";
 import "./UserProfile.css";
 
 const UserProfile = () => {
   const { user } = useContext(AuthContext);
+  const nav = useNavigate();
+
+  // const handleClick = () => {
+  //   signOut();
+  //   nav("/");
+  // };
+
+  useEffect(() => {
+    !user && nav("/");
+  }, [user]);
 
   return (
     <main className="UserProfile">

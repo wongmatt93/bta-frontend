@@ -15,4 +15,5 @@ export default interface SingleDaySchedule {
   date2: string;
   uid: string;
   cityName: string;
+  cityPhoto: string;
 }

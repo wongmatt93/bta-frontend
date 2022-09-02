@@ -1,4 +1,37 @@
-.ReactModal__Content {
-  height: 300px;
+.PlannedTripItinerary .open-modal-button {
+  background-color: #f0b202;
+  font-family: "Oswald", sans-serif;
+  font-size: 15px;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 30px;
+  margin-top: 10px;
+}
+
+.overlay-modal {
+  display: flex;
+  justify-content: center;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.1);
+  position: fixed;
+}
+
+.modal {
+  padding: 15px;
+  height: 65%;
+  width: 85%;
   margin-top: 90px;
+  position: relative;
+  background-color: #ebebeb;
+  overflow: scroll;
+}
+
+.modal i {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 20px;
 }

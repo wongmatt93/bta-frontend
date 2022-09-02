@@ -11,9 +11,6 @@ const PlannedTrips = () => {
   const { trips, getAndSetTrips } = useContext(PlannedTripsContext);
   const { user } = useContext(AuthContext);
 
-  // const getAndSetTrips = (user: User) => {
-  //   getScheduleByUid(user.uid).then((response) => setTrips(response));
-  // };
   useEffect(() => {
     user && getAndSetTrips(user.uid);
   }, [user]);

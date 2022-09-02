@@ -22,8 +22,12 @@ const PlannedTripItinerary = ({ itinerary }: Props) => {
 
   return (
     <div className="PlannedTripItinerary">
-      <button onClick={openModal}>Open Modal</button>
+      <button className="open-modal-button" onClick={openModal}>
+        View Itinerary
+      </button>
       <Modal
+        className="modal"
+        overlayClassName="overlay-modal"
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         contentLabel="Example Modal"
@@ -31,7 +35,7 @@ const PlannedTripItinerary = ({ itinerary }: Props) => {
         {itinerary.map((item, index) => (
           <SingleDayItinerary schedule={item} index={index} key={index} />
         ))}
-        <button onClick={closeModal}>close</button>
+        <i className="fa-solid fa-xmark" onClick={closeModal}></i>
       </Modal>
     </div>
   );

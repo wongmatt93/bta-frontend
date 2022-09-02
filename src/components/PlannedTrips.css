@@ -1,0 +1,9 @@
+.PlannedTrips {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.PlannedTrips ul {
+  width: 85%;
+}

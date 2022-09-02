@@ -26,16 +26,25 @@ const PlannedTripCard = ({ trip }: Props) => {
     ).then((response) => setItinerary(response));
   }, [trip]);
 
+  const startDate = new Date(trip._id.date1);
+  const endDate = new Date(trip._id.date2);
+
   return (
     <li className="PlannedTripCard">
-      <h3>{trip._id.cityName}</h3>
-      <h4>
-        {trip._id.date1} - {trip._id.date2}
-      </h4>
+      <div className="info-container">
+        <img src={trip._id.cityPhoto} />
+        <div className="name-date-container">
+          <h3>{trip._id.cityName}</h3>
+          <h4>
+            {startDate.toLocaleDateString()} - {endDate.toLocaleDateString()}
+          </h4>
+        </div>
+      </div>
       <PlannedTripItinerary itinerary={itinerary} />
-      <button onClick={() => deleteFullTrip(trip, user!.uid)}>
-        Looks too Nice
-      </button>
+      <i
+        className="fa-solid fa-trash-can"
+        onClick={() => deleteFullTrip(trip, user!.uid)}
+      ></i>
     </li>
   );
 };
