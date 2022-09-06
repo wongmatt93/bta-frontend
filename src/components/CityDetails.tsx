@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
+import Preferences from "../models/Preferences";
 import VotedOnContext from "../context/VotedOnContext";
 import SingleRoadGoatResponse from "../models/SingleRoadGoatResponse";
 import {
@@ -16,7 +17,7 @@ interface Props {
 
 const CityDetails = ({ id }: Props) => {
   const { votedOn } = useContext(VotedOnContext);
-  const { user } = useContext(AuthContext);
+  const { user, currentUserProfile } = useContext(AuthContext);
   const { addCityToVotedOn } = useContext(VotedOnContext);
   const navigate = useNavigate();
   const [details, setDetails] = useState<SingleRoadGoatResponse | null>(null);
@@ -60,9 +61,25 @@ const CityDetails = ({ id }: Props) => {
     navigate("/recommendations");
   };
 
+  // const [isScrolling, setIsScrolling] = useState(true);
+  // let timer: ReturnType<typeof setTimeout> | null = null;
+
+  // useEffect(() => {
+  //   window.addEventListener("scroll", listenToScroll);
+  //   return () => window.removeEventListener("scroll", listenToScroll);
+  // }, []);
+
+  // const listenToScroll = () => {
+  //   setIsScrolling(true);
+  //   clearTimeout(timer!);
+  //   timer = setTimeout(() => {
+  //     setIsScrolling(false);
+  //   }, 2000);
+  // };
+
   return (
     <div className="CityDetails">
-      {details && (
+      {details && currentUserProfile!.preferences! && (
         <>
           <div className="image-container">
             <img
@@ -79,9 +96,30 @@ const CityDetails = ({ id }: Props) => {
             </div>
             <p className="summary">{summary}</p>
             <ul>
-              {knownFor.map((item, index) => (
-                <li key={index}>{item.attributes.name}</li>
-              ))}
+              {knownFor.map((item, index) => {
+                const known: keyof Preferences = item.attributes.name
+                  .replace(
+                    /(?:^\w|[A-Z]|\b\w)/g,
+                    function (word: string, index: number) {
+                      return index === 0
+                        ? word.toLowerCase()
+                        : word.toUpperCase();
+                    }
+                  )
+                  .replace(/\s+/g, "");
+                return (
+                  <li
+                    key={index}
+                    style={
+                      currentUserProfile!.preferences![known]
+                        ? { backgroundColor: "#f0b202" }
+                        : { backgroundColor: "#ededed" }
+                    }
+                  >
+                    {item.attributes.name}
+                  </li>
+                );
+              })}
             </ul>
             {!votedOn.some((item) => {
               return item.cityId === id && item.favorite;

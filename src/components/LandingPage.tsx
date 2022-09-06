@@ -1,18 +1,20 @@
 import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
-import PreferencesContext from "../context/PreferencesContext";
 import { signInWithGoogle } from "../firebaseConfig";
 import "./LandingPage.css";
 
 const LandingPage = () => {
-  const { preferences } = useContext(PreferencesContext);
-  const { user } = useContext(AuthContext);
+  const { user, currentUserProfile } = useContext(AuthContext);
   const nav = useNavigate();
 
   useEffect(() => {
-    user && (preferences ? nav("/recommendations") : nav("/preferences"));
-  }, [user]);
+    user &&
+      currentUserProfile &&
+      (currentUserProfile?.preferences
+        ? nav("/recommendations")
+        : nav("/preferences"));
+  }, [currentUserProfile]);
 
   return (
     <main className="LandingPage">

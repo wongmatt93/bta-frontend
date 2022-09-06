@@ -1,6 +1,4 @@
-export interface Preferences {
-  _id?: string;
-  uid: string;
+export default interface Preferences {
   charming: boolean;
   foodie: boolean;
   nightlife: boolean;

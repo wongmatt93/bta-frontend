@@ -10,7 +10,7 @@ const FavoriteCard = ({ favorite }: Props) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate(`/recommendations/${favorite.cityId}/details`);
+    navigate(`/city-details/${favorite!.cityId}/`);
   };
 
   return (
@@ -22,11 +22,3 @@ const FavoriteCard = ({ favorite }: Props) => {
 };
 
 export default FavoriteCard;
-
-// add a button to remove from favorites
-//// after added to favorites, button for plan trip
-
-// plan for tomorrow:
-//// nav, itinery
-//////// form for picking dates
-// database for whole trip planned

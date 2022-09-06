@@ -4,7 +4,6 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import AuthContextProvider from "./context/AuthContextProvider";
-import PreferencesContextProvider from "./context/PreferencesContextProvider";
 import VotedOnContextProvider from "./context/VotedOnContextProvider";
 import { PlannedTripsContextProvider } from "./context/PlannedTripsContextProvider";
 
@@ -14,13 +13,11 @@ const root = ReactDOM.createRoot(
 root.render(
   // <React.StrictMode>
   <AuthContextProvider>
-    <PreferencesContextProvider>
-      <VotedOnContextProvider>
-        <PlannedTripsContextProvider>
-          <App />
-        </PlannedTripsContextProvider>
-      </VotedOnContextProvider>
-    </PreferencesContextProvider>
+    <VotedOnContextProvider>
+      <PlannedTripsContextProvider>
+        <App />
+      </PlannedTripsContextProvider>
+    </VotedOnContextProvider>
   </AuthContextProvider>
   // </React.StrictMode>
 );

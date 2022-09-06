@@ -11,6 +11,8 @@ import {
 import CityDetails from "./CityDetails";
 import RecommendationCard from "./RecommendationCard";
 import "./RecommendationPage.css";
+import { CSSTransition } from "react-transition-group";
+import "animate.css";
 
 const RecommendationPage = () => {
   const { user } = useContext(AuthContext);
@@ -20,15 +22,15 @@ const RecommendationPage = () => {
   const [moreCityInfo, setMoreCityInfo] = useState<RoadGoatCity | null>(null);
   const [city, setCity] = useState<City | null>(null);
   const [cities, setCities] = useState<City[]>([]);
+  const [pageLoaded, setPageLoaded] = useState(false);
+  const [cityLoaded, setCityLoaded] = useState(false);
 
   const getAndSetCities = (country: string): Promise<void> =>
     getCitiesByCountry(country).then((response) => {
       setCities(
-        response.filter((item) => {
-          return !votedOn.some((voted) => {
-            return voted.cityName === item.name;
-          });
-        })
+        response.filter(
+          (item) => !votedOn.some((voted) => voted.cityName === item.name)
+        )
       );
     });
 
@@ -40,7 +42,12 @@ const RecommendationPage = () => {
       favorite: favorite,
       photo,
     });
+    setCityLoaded(false);
   };
+
+  useEffect(() => {
+    setPageLoaded(true);
+  }, []);
 
   useEffect(() => {
     getAndSetCities("US");
@@ -65,6 +72,7 @@ const RecommendationPage = () => {
           setPhoto(response.included[0].attributes.image!.full);
         }
       });
+    setCityLoaded(true);
   }, [city]);
 
   useEffect(() => {
@@ -80,7 +88,22 @@ const RecommendationPage = () => {
         <>
           <h2>Recommendations</h2>
           <div className="mobile-view">
-            <RecommendationCard city={city} info={moreCityInfo} photo={photo} />
+            <CSSTransition
+              in={cityLoaded}
+              classNames={{
+                enterActive:
+                  "animate__animated animate__fadeIn animate__slower",
+                exitActive:
+                  "animate__animated animate__fadeOut animate__slower",
+              }}
+              timeout={2000}
+            >
+              <RecommendationCard
+                city={city}
+                info={moreCityInfo}
+                photo={photo}
+              />
+            </CSSTransition>
             <div className="thumbs-container">
               <i
                 className="fa-solid fa-thumbs-up thumbs-up"
