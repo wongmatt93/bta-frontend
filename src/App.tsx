@@ -14,7 +14,7 @@ import FavoritesPage from "./components/FavoritesPage";
 import PlanningPage from "./components/PlanningPage";
 import UserProfile from "./components/UserProfile";
 import PlannedTrips from "./components/PlannedTrips";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import AuthContext from "./context/AuthContext";
 import CityDetailsPage from "./components/CityDetailsPage";
 import PastTripsPage from "./components/PastTripsPage";
@@ -34,6 +34,7 @@ function App() {
             path="/recommendations/:id/details"
             element={<CityDetailsPage />}
           />
+          <Route path="/city-details/:id/" element={<CityDetailsPage />} />
           <Route path="/favorites" element={<FavoritesPage />} />
           <Route path="/plan-your-trip/:id" element={<PlanningPage />} />
           <Route path="/user-profile" element={<UserProfile />} />

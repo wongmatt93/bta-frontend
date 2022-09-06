@@ -1,14 +1,12 @@
-import { FormEvent, useContext, useState } from "react";
+import { FormEvent, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
-import PreferencesContext from "../context/PreferencesContext";
-import { Preferences } from "../models/Preferences";
+import Preferences from "../models/Preferences";
 import "./PreferenceForm.css";
 
 const PreferenceForm = () => {
-  const { user } = useContext(AuthContext);
+  const { preferences, updateUserPreferences } = useContext(AuthContext);
   const navigate = useNavigate();
-  const { addPreferences } = useContext(PreferencesContext);
 
   const [charming, setCharming] = useState(false);
   const [foodie, setFoodie] = useState(false);
@@ -34,7 +32,6 @@ const PreferenceForm = () => {
   const handleSubmit = (e: FormEvent): void => {
     e.preventDefault();
     const newPreference: Preferences = {
-      uid: user!.uid,
       charming,
       foodie,
       nightlife,
@@ -56,9 +53,34 @@ const PreferenceForm = () => {
       wineries,
       shopping,
     };
-    navigate("/recommendations");
-    addPreferences(user!.uid, newPreference);
+    updateUserPreferences(newPreference);
+    !preferences && navigate("/recommendations");
   };
+
+  useEffect(() => {
+    if (preferences) {
+      setCharming(preferences.charming);
+      setFoodie(preferences.foodie);
+      setNightlife(preferences.nightlife);
+      setArchitecture(preferences.architecture);
+      setHistory(preferences.history);
+      setMuseums(preferences.museums);
+      setPerformingArts(preferences.performingArts);
+      setMusic(preferences.music);
+      setHipster(preferences.hipster);
+      setHippie(preferences.hippie);
+      setPosh(preferences.posh);
+      setFamilyFriendly(preferences.familyFriendly);
+      setLgbtScene(preferences.lgbtScene);
+      setDiversity(preferences.diversity);
+      setBeachTown(preferences.beachTown);
+      setCollegeTown(preferences.collegeTown);
+      setSkiTown(preferences.skiTown);
+      setOutdoorsy(preferences.outdoorsy);
+      setWineries(preferences.wineries);
+      setShopping(preferences.shopping);
+    }
+  }, [preferences]);
 
   return (
     <form className="PreferenceForm" onSubmit={(e) => handleSubmit(e)}>
@@ -253,7 +275,11 @@ const PreferenceForm = () => {
         />
         <label htmlFor="shopping">Shopping</label>
       </div>
-      <button>Continue</button>
+      {preferences ? (
+        <button>Update Preferences</button>
+      ) : (
+        <button>Continue</button>
+      )}
     </form>
   );
 };

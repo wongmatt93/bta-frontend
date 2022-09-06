@@ -7,8 +7,8 @@ const PastTripsList = () => {
 
   return (
     <ul className="PastTripsList">
-      {pastTrips.map((trip) => (
-        <li>{trip._id.cityName}</li>
+      {pastTrips.map((trip, index) => (
+        <li key={index}>{trip._id.cityName}</li>
       ))}
     </ul>
   );

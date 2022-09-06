@@ -1,9 +1,10 @@
 import "./PlannedTripItinerary.css";
 import { useState } from "react";
-import ReactDOM from "react-dom";
 import Modal from "react-modal";
 import SingleDaySchedule from "../models/SingleDaySchedule";
 import SingleDayItinerary from "./SingleDayItinerary";
+import "animate.css";
+
 Modal.setAppElement("#root");
 
 interface Props {
