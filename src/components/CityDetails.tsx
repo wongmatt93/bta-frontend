@@ -81,6 +81,9 @@ const CityDetails = ({ id }: Props) => {
       {details && currentUserProfile!.preferences! && (
         <>
           <div className="image-container">
+            <button onClick={() => navigate(`/plan-your-trip/${id}`)}>
+              Get Itinerary
+            </button>
             <img
               className="details-img"
               src={photo}
@@ -91,7 +94,10 @@ const CityDetails = ({ id }: Props) => {
             <div className="name-rating-container">
               {" "}
               <h2>{details.data.attributes.name}</h2>
-              <p>{details.data.attributes.average_rating.toFixed(1)}</p>
+              <p className="rating-text">
+                <i className="fa-solid fa-star"></i>
+                {details.data.attributes.average_rating.toFixed(1)}
+              </p>
             </div>
             <p className="summary">{summary}</p>
             <ul>
@@ -122,7 +128,7 @@ const CityDetails = ({ id }: Props) => {
             </ul>
             {!votedOn.some((item) => {
               return item.cityId === id && item.favorite;
-            }) ? (
+            }) && (
               <div className="details-thumbs-container">
                 <i
                   className="fa-solid fa-thumbs-up thumbs-up"
@@ -133,10 +139,6 @@ const CityDetails = ({ id }: Props) => {
                   onClick={() => handleClick(false)}
                 ></i>
               </div>
-            ) : (
-              <button onClick={() => navigate(`/plan-your-trip/${id}`)}>
-                Get Itinerary
-              </button>
             )}
           </div>
         </>

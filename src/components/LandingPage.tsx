@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
 import { signInWithGoogle } from "../firebaseConfig";
@@ -7,6 +7,11 @@ import "./LandingPage.css";
 const LandingPage = () => {
   const { user, currentUserProfile } = useContext(AuthContext);
   const nav = useNavigate();
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    setLoaded(true);
+  }, []);
 
   useEffect(() => {
     user &&
@@ -18,7 +23,13 @@ const LandingPage = () => {
 
   return (
     <main className="LandingPage">
-      <h2>Plan Your Nightmare Vacation</h2>
+      <div className="logo-container">
+        <img src="/assets/bta-logo.svg" className="logo" />
+        <h2>
+          Plan Your <span>Dream</span> Vacation
+        </h2>
+      </div>
+
       <div className="button-p-container">
         <p>You're gunna have a bad time.</p>
         <div className="sign-in-button-container">

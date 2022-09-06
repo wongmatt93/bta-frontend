@@ -8,6 +8,8 @@
 .CityDetails .image-container {
   width: 100%;
   position: relative;
+  display: flex;
+  justify-content: center;
 }
 
 .CityDetails .details-img {
@@ -34,9 +36,16 @@
   font-weight: 500;
 }
 
-.CityDetails p {
+.CityDetails .rating-text {
   font-family: "Oswald", sans-serif;
-  font-size: 15px;
+  font-size: 25px;
+  display: flex;
+  align-items: center;
+}
+
+.CityDetails .fa-star {
+  color: #f0b202;
+  margin-right: 10px;
 }
 
 .CityDetails .summary {
@@ -93,16 +102,20 @@
 }
 
 .CityDetails button {
-  position: fixed;
-  bottom: 40px;
-  width: 287px;
-  height: 68px;
+  position: absolute;
+  bottom: 10px;
+  width: 300px;
+  height: 40px;
   background: #f0b202;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 15px;
   border: none;
   font-family: "Oswald", sans-serif;
   font-size: 24px;
+}
+
+.CityDetails button:hover {
+  background-color: white;
 }
 
 @media only screen and (min-width: 768px) {
@@ -113,8 +126,6 @@
   }
 
   .CityDetails .image-container {
-    display: flex;
-    justify-content: center;
     width: 50%;
   }
 

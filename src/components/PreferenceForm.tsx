@@ -93,7 +93,10 @@ const PreferenceForm = () => {
           onChange={(e) => setCharming(e.target.checked)}
         />
         <label htmlFor="charming">
-          <div>❤️</div>Charming
+          <div>
+            <i className="fa-solid fa-heart"></i>
+          </div>
+          Charming
         </label>
 
         <input
@@ -104,7 +107,10 @@ const PreferenceForm = () => {
           onChange={(e) => setFoodie(e.target.checked)}
         />
         <label htmlFor="foodie">
-          <div>🍣</div>Foodie
+          <div>
+            <i className="fa-solid fa-bowl-food"></i>
+          </div>
+          Foodie
         </label>
 
         <input
@@ -115,7 +121,10 @@ const PreferenceForm = () => {
           onChange={(e) => setNightlife(e.target.checked)}
         />
         <label htmlFor="nightLife">
-          <div>🧉</div>Nightlife
+          <div>
+            <i className="fa-solid fa-martini-glass-citrus"></i>
+          </div>
+          Nightlife
         </label>
 
         <input
@@ -125,7 +134,12 @@ const PreferenceForm = () => {
           checked={architecture}
           onChange={(e) => setArchitecture(e.target.checked)}
         />
-        <label htmlFor="architecture">Architecture</label>
+        <label htmlFor="architecture">
+          <div>
+            <i className="fa-solid fa-torii-gate"></i>
+          </div>
+          Architecture
+        </label>
 
         <input
           type="checkbox"
@@ -146,7 +160,10 @@ const PreferenceForm = () => {
           onChange={(e) => setMuseums(e.target.checked)}
         />
         <label htmlFor="museums">
-          <div>🏛️</div> Museums
+          <div>
+            <i className="fa-solid fa-building-columns"></i>
+          </div>{" "}
+          Museums
         </label>
 
         <input
@@ -156,7 +173,12 @@ const PreferenceForm = () => {
           checked={performingArts}
           onChange={(e) => setPerformingArts(e.target.checked)}
         />
-        <label htmlFor="performingArts">Performing Arts</label>
+        <label htmlFor="performingArts">
+          <div>
+            <i className="fa-solid fa-masks-theater"></i>
+          </div>
+          Performing Arts
+        </label>
 
         <input
           type="checkbox"
@@ -165,7 +187,12 @@ const PreferenceForm = () => {
           checked={music}
           onChange={(e) => setMusic(e.target.checked)}
         />
-        <label htmlFor="music">Music</label>
+        <label htmlFor="music">
+          <div>
+            <i className="fa-solid fa-music"></i>
+          </div>
+          Music
+        </label>
 
         <input
           type="checkbox"
@@ -174,7 +201,12 @@ const PreferenceForm = () => {
           checked={hipster}
           onChange={(e) => setHipster(e.target.checked)}
         />
-        <label htmlFor="hipster">Hipster</label>
+        <label htmlFor="hipster">
+          <div>
+            <i className="fa-solid fa-glasses"></i>
+          </div>
+          Hipster
+        </label>
 
         <input
           type="checkbox"
@@ -183,7 +215,12 @@ const PreferenceForm = () => {
           checked={hippie}
           onChange={(e) => setHippie(e.target.checked)}
         />
-        <label htmlFor="hippie">Hippie</label>
+        <label htmlFor="hippie">
+          <div>
+            <i className="fa-solid fa-peace"></i>
+          </div>
+          Hippie
+        </label>
 
         <input
           type="checkbox"
@@ -192,7 +229,12 @@ const PreferenceForm = () => {
           checked={posh}
           onChange={(e) => setPosh(e.target.checked)}
         />
-        <label htmlFor="posh">Posh</label>
+        <label htmlFor="posh">
+          <div>
+            <i className="fa-solid fa-gem"></i>
+          </div>
+          Posh
+        </label>
 
         <input
           type="checkbox"
@@ -201,7 +243,12 @@ const PreferenceForm = () => {
           checked={familyFriendly}
           onChange={(e) => setFamilyFriendly(e.target.checked)}
         />
-        <label htmlFor="familyFriendly">Family Friendly</label>
+        <label htmlFor="familyFriendly">
+          <div>
+            <i className="fa-solid fa-baby"></i>
+          </div>
+          Family Friendly
+        </label>
 
         <input
           type="checkbox"
@@ -210,7 +257,12 @@ const PreferenceForm = () => {
           checked={lgbtScene}
           onChange={(e) => setLgbtScene(e.target.checked)}
         />
-        <label htmlFor="lgbtScene">LGBT Scene</label>
+        <label htmlFor="lgbtScene">
+          <div>
+            <i className="fa-solid fa-rainbow"></i>
+          </div>
+          LGBT Scene
+        </label>
 
         <input
           type="checkbox"
@@ -219,7 +271,12 @@ const PreferenceForm = () => {
           checked={diversity}
           onChange={(e) => setDiversity(e.target.checked)}
         />
-        <label htmlFor="diversity">Diversity</label>
+        <label htmlFor="diversity">
+          <div>
+            <i className="fa-solid fa-people-group"></i>
+          </div>
+          Diversity
+        </label>
 
         <input
           type="checkbox"
@@ -228,7 +285,12 @@ const PreferenceForm = () => {
           checked={beachTown}
           onChange={(e) => setBeachTown(e.target.checked)}
         />
-        <label htmlFor="beachTown">Beach Town</label>
+        <label htmlFor="beachTown">
+          <div>
+            <i className="fa-solid fa-umbrella-beach"></i>
+          </div>
+          Beach Town
+        </label>
 
         <input
           type="checkbox"
@@ -237,7 +299,12 @@ const PreferenceForm = () => {
           checked={collegeTown}
           onChange={(e) => setCollegeTown(e.target.checked)}
         />
-        <label htmlFor="collegeTown">College Town</label>
+        <label htmlFor="collegeTown">
+          <div>
+            <i className="fa-solid fa-graduation-cap"></i>
+          </div>
+          College Town
+        </label>
 
         <input
           type="checkbox"
@@ -246,7 +313,12 @@ const PreferenceForm = () => {
           checked={skiTown}
           onChange={(e) => setSkiTown(e.target.checked)}
         />
-        <label htmlFor="skiTown">Ski Town</label>
+        <label htmlFor="skiTown">
+          <div>
+            <i className="fa-solid fa-person-skiing"></i>
+          </div>
+          Ski Town
+        </label>
 
         <input
           type="checkbox"
@@ -255,7 +327,12 @@ const PreferenceForm = () => {
           checked={outdoorsy}
           onChange={(e) => setOutdoorsy(e.target.checked)}
         />
-        <label htmlFor="outdoorsy">Outdoorsy</label>
+        <label htmlFor="outdoorsy">
+          <div>
+            <i className="fa-solid fa-tree"></i>
+          </div>
+          Outdoorsy
+        </label>
 
         <input
           type="checkbox"
@@ -264,7 +341,12 @@ const PreferenceForm = () => {
           checked={wineries}
           onChange={(e) => setWineries(e.target.checked)}
         />
-        <label htmlFor="wineries">Wineries</label>
+        <label htmlFor="wineries">
+          <div>
+            <i className="fa-solid fa-wine-glass"></i>
+          </div>
+          Wineries
+        </label>
 
         <input
           type="checkbox"
@@ -273,7 +355,12 @@ const PreferenceForm = () => {
           checked={shopping}
           onChange={(e) => setShopping(e.target.checked)}
         />
-        <label htmlFor="shopping">Shopping</label>
+        <label htmlFor="shopping">
+          <div>
+            <i className="fa-solid fa-bag-shopping"></i>
+          </div>
+          Shopping
+        </label>
       </div>
       {preferences ? (
         <button>Update Preferences</button>

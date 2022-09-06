@@ -28,11 +28,25 @@
   justify-content: space-between;
 }
 
+.RecommendationCard h3 {
+  font-size: 20px;
+}
+
 .RecommendationCard p {
   font-family: "Oswald", sans-serif;
+}
+
+.RecommendationCard .rating-text {
+  display: flex;
+  align-items: center;
+  font-size: 25px;
 }
 
 .RecommendationCard i {
   margin-right: 5px;
   color: #f0b202;
+}
+
+.RecommendationCard .fa-star {
+  margin-right: 10px;
 }

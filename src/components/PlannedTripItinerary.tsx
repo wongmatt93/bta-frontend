@@ -33,6 +33,9 @@ const PlannedTripItinerary = ({ itinerary }: Props) => {
         onRequestClose={closeModal}
         contentLabel="Example Modal"
       >
+        {itinerary.length && itinerary[0].hotel && (
+          <h3>HOTEL - {itinerary[0].hotel}</h3>
+        )}
         {itinerary.map((item, index) => (
           <SingleDayItinerary schedule={item} index={index} key={index} />
         ))}

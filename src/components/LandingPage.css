@@ -1,4 +1,7 @@
 .LandingPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   flex: 1;
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url("/public/assets/landing_background.jpg");
@@ -7,12 +10,24 @@
   margin-top: 0 !important;
 }
 
+.LandingPage .logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.LandingPage .logo {
+  max-width: 220px;
+  margin: 20px;
+}
+
 .LandingPage h2 {
   font-family: "Merriweather", sans-serif;
   font-style: normal;
   font-weight: 700;
   font-size: 55px;
   line-height: 69px;
+  text-align: center;
   color: #ffffff;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
@@ -33,6 +48,8 @@
   border-radius: 24px 24px 0px 0px;
   position: absolute;
   bottom: 0;
+  left: 0;
+  right: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -53,8 +70,12 @@
 
 @media only screen and (min-width: 768px) {
   .LandingPage {
-    display: flex;
+    flex-direction: row;
     align-items: center;
+  }
+
+  .LandingPage .logo {
+    max-width: 260px;
   }
 
   .LandingPage h2 {

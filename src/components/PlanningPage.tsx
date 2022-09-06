@@ -120,7 +120,7 @@ const PlanningPage = () => {
             event1Photo: events[eventOneIndex].image_url,
             event2: events[eventTwoIndex].name,
             event2Photo: events[eventTwoIndex].image_url,
-            // hotel: duration > 1 ? hotel!.name : null,
+            hotel: duration > 1 ? hotel!.name : null,
             date1,
             date2,
             uid: user!.uid,

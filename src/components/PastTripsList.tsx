@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { PlannedTripsContext } from "../context/PlannedTripsContext";
 import "./PastTripsList.css";
+import PlannedTripCard from "./PlannedTripCard";
 
 const PastTripsList = () => {
   const { pastTrips } = useContext(PlannedTripsContext);
@@ -8,7 +9,7 @@ const PastTripsList = () => {
   return (
     <ul className="PastTripsList">
       {pastTrips.map((trip, index) => (
-        <li key={index}>{trip._id.cityName}</li>
+        <PlannedTripCard trip={trip} key={index} />
       ))}
     </ul>
   );

@@ -45,3 +45,7 @@
 .Header i {
   font-size: 23px;
 }
+
+.Header i:hover {
+  color: #f0b202;
+}
