@@ -18,7 +18,7 @@ import {
 import "./PlanningPage.css";
 
 const PlanningPage = () => {
-  const { user } = useContext(AuthContext);
+  const { user, votedOn } = useContext(AuthContext);
   const { getAndSetTrips } = useContext(PlannedTripsContext);
   const navigate = useNavigate();
   const id: string | undefined = useParams().id;
@@ -31,8 +31,6 @@ const PlanningPage = () => {
   const [date1, setDate1] = useState("");
   const [date2, setDate2] = useState("");
   const [cityPhoto, setCityPhoto] = useState("");
-
-  const { votedOn } = useContext(VotedOnContext);
 
   useEffect(() => {
     if (id) {

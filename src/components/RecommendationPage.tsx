@@ -15,8 +15,7 @@ import { CSSTransition } from "react-transition-group";
 import "animate.css";
 
 const RecommendationPage = () => {
-  const { user } = useContext(AuthContext);
-  const { votedOn, addCityToVotedOn } = useContext(VotedOnContext);
+  const { user, votedOn, updateUserVotedOn } = useContext(AuthContext);
   const [photo, setPhoto] = useState("");
   const [cityInfo, setCityInfo] = useState<RoadGoatCity | null>(null);
   const [moreCityInfo, setMoreCityInfo] = useState<RoadGoatCity | null>(null);
@@ -35,7 +34,7 @@ const RecommendationPage = () => {
     });
 
   const handleClick = (favorite: boolean): void => {
-    addCityToVotedOn({
+    updateUserVotedOn(user!.uid, {
       cityName: city!.name,
       cityId: cityInfo!.id,
       uid: user!.uid,

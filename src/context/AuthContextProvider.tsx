@@ -3,9 +3,14 @@ import { User } from "firebase/auth";
 import { auth } from "../firebaseConfig";
 import AuthContext from "./AuthContext";
 import UserProfile from "../models/UserProfile";
-import { addNewProfile, getAllProfiles } from "../services/userProfileService";
+import {
+  addNewProfile,
+  addVotedOnCity,
+  getAllProfiles,
+} from "../services/userProfileService";
 import Preferences from "../models/Preferences";
 import { addUpdateUserPreferences } from "../services/userProfileService";
+import VotedOn from "../models/VotedOn";
 
 interface Props {
   children: ReactNode;
@@ -18,10 +23,17 @@ const AuthContextProvider = ({ children }: Props) => {
     UserProfile | undefined
   >(undefined);
   const [preferences, setPreferences] = useState<Preferences | null>(null);
+  const [votedOn, setVotedOn] = useState<VotedOn[]>([]);
 
   const updateUserPreferences = (preferences: Preferences): void => {
     currentUserProfile &&
       addUpdateUserPreferences(currentUserProfile.uid, preferences).then(() =>
+        getAllProfiles().then((response) => setProfiles(response))
+      );
+  };
+  const updateUserVotedOn = (uid: string, votedOn: VotedOn): void => {
+    currentUserProfile &&
+      addVotedOnCity(uid, votedOn).then(() =>
         getAllProfiles().then((response) => setProfiles(response))
       );
   };
@@ -60,7 +72,10 @@ const AuthContextProvider = ({ children }: Props) => {
   }, [profiles]);
 
   useEffect(() => {
-    currentUserProfile && setPreferences(currentUserProfile.preferences);
+    if (currentUserProfile) {
+      setPreferences(currentUserProfile.preferences);
+      setVotedOn(currentUserProfile.votedOn);
+    }
   }, [currentUserProfile]);
 
   return (
@@ -70,7 +85,9 @@ const AuthContextProvider = ({ children }: Props) => {
         profiles,
         currentUserProfile,
         preferences,
+        votedOn,
         updateUserPreferences,
+        updateUserVotedOn,
       }}
     >
       {children}

@@ -16,9 +16,8 @@ interface Props {
 }
 
 const CityDetails = ({ id }: Props) => {
-  const { votedOn } = useContext(VotedOnContext);
-  const { user, currentUserProfile } = useContext(AuthContext);
-  const { addCityToVotedOn } = useContext(VotedOnContext);
+  const { user, currentUserProfile, votedOn, updateUserVotedOn } =
+    useContext(AuthContext);
   const navigate = useNavigate();
   const [details, setDetails] = useState<SingleRoadGoatResponse | null>(null);
   const [summary, setSummary] = useState("");
@@ -51,7 +50,7 @@ const CityDetails = ({ id }: Props) => {
   }, [name]);
 
   const handleClick = (favorite: boolean): void => {
-    addCityToVotedOn({
+    updateUserVotedOn(user!.uid, {
       cityName: name,
       cityId: id!,
       uid: user!.uid,
