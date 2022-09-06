@@ -12,7 +12,6 @@ const FavoritesList = () => {
 
   useEffect(() => {
     setFavorites(votedOn.filter((item) => item.favorite));
-    console.log(votedOn);
   }, [votedOn]);
 
   return (

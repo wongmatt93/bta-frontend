@@ -33,6 +33,10 @@
   cursor: pointer;
 }
 
+.PreferenceForm label:hover {
+  background-color: white;
+}
+
 input:checked + label {
   border: 2px solid #f0b202;
   box-sizing: border-box;
@@ -48,4 +52,8 @@ input:checked + label {
   font-family: "Oswald", sans-serif;
   font-size: 24px;
   margin: 20px;
+}
+
+.PreferenceForm button:hover {
+  background-color: white;
 }

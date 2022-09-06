@@ -1,9 +1,10 @@
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode, useContext, useEffect, useState } from "react";
 import PlannedTrip from "../models/PlannedTrip";
 import {
   deleteFullItinerary,
   getScheduleByUid,
 } from "../services/scheduleService";
+import AuthContext from "./AuthContext";
 import { PlannedTripsContext } from "./PlannedTripsContext";
 
 interface Props {
@@ -11,6 +12,7 @@ interface Props {
 }
 
 export const PlannedTripsContextProvider = ({ children }: Props) => {
+  const { currentUserProfile } = useContext(AuthContext);
   const [trips, setTrips] = useState<PlannedTrip[]>([]);
   const [pastTrips, setPastTrips] = useState<PlannedTrip[]>([]);
   const [futureTrips, setFutureTrips] = useState<PlannedTrip[]>([]);
@@ -22,6 +24,10 @@ export const PlannedTripsContextProvider = ({ children }: Props) => {
   const deleteFullTrip = (trip: PlannedTrip, uid: string) => {
     deleteFullItinerary(trip).then(() => getAndSetTrips(uid));
   };
+
+  useEffect(() => {
+    currentUserProfile && getAndSetTrips(currentUserProfile.uid);
+  }, [currentUserProfile]);
 
   useEffect(() => {
     let today: Date = new Date();

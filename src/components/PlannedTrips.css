@@ -4,6 +4,10 @@
   align-items: center;
 }
 
+.PlannedTrips h2 {
+  margin: 20px;
+}
+
 .PlannedTrips ul {
   width: 85%;
 }

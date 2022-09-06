@@ -1,0 +1,9 @@
+.PastTripsPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.PastTripsPage h2 {
+  margin: 20px;
+}

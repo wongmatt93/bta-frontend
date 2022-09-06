@@ -20,6 +20,7 @@ const FavoritesPage = () => {
       timeout={1000}
     >
       <main className="FavoritesPage">
+        <h2>Favorites</h2>
         <FavoritesList />
       </main>
     </CSSTransition>

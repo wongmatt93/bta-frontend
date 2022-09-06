@@ -19,6 +19,7 @@ const PastTripsPage = () => {
       timeout={20000}
     >
       <main className="PastTripsPage">
+        <h2>Your Past Trips</h2>
         <PastTripsList />
       </main>
     </CSSTransition>
