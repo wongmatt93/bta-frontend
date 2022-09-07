@@ -7,6 +7,7 @@ export default interface TheRealPlannedTrip {
   cityName: string;
   uid: string;
   cityPhoto: string;
+  hotel: string | null;
   schedule: SingleDaySchedule[];
   photos: string[];
 }

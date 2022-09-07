@@ -1,12 +1,13 @@
 import { createContext } from "react";
-import PlannedTrip from "../models/PlannedTrip";
+import TheRealPlannedTrip from "../models/TheRealPlannedTrips";
 
 interface PlannedTripsContextModel {
-  trips: PlannedTrip[];
-  pastTrips: PlannedTrip[];
-  futureTrips: PlannedTrip[];
+  trips: TheRealPlannedTrip[];
+  pastTrips: TheRealPlannedTrip[];
+  futureTrips: TheRealPlannedTrip[];
   getAndSetTrips: (uid: string) => void;
-  deleteFullTrip: (trip: PlannedTrip, uid: string) => void;
+  addNewTrip: (trip: TheRealPlannedTrip) => void;
+  // deleteFullTrip: (trip: PlannedTrip, uid: string) => void;
 }
 
 const defaultValues: PlannedTripsContextModel = {
@@ -14,7 +15,8 @@ const defaultValues: PlannedTripsContextModel = {
   pastTrips: [],
   futureTrips: [],
   getAndSetTrips: () => {},
-  deleteFullTrip: () => {},
+  addNewTrip: () => {},
+  // deleteFullTrip: () => {},
 };
 
 export const PlannedTripsContext = createContext(defaultValues);

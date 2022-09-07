@@ -2,7 +2,6 @@ import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
 import Preferences from "../models/Preferences";
-import VotedOnContext from "../context/VotedOnContext";
 import SingleRoadGoatResponse from "../models/SingleRoadGoatResponse";
 import {
   getCityInfoById,
