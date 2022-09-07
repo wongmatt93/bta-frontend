@@ -33,6 +33,11 @@
   cursor: pointer;
 }
 
+.PreferenceForm i {
+  font-size: 20px;
+  margin-bottom: 7px;
+}
+
 .PreferenceForm label:hover {
   background-color: white;
 }
@@ -58,14 +63,70 @@ input:checked + label {
   background-color: white;
 }
 
-.PreferenceForm i {
-  font-size: 20px;
-}
-
 .PreferenceForm .fa-heart {
   color: pink;
 }
 
 .PreferenceForm .fa-bowl-food {
   color: firebrick;
+}
+.PreferenceForm .fa-martini-glass-citrus {
+  color: lightseagreen;
+}
+.PreferenceForm .fa-torii-gate {
+  color: brown;
+}
+.PreferenceForm .fa-chess-rook {
+  color: darkslategray;
+}
+.PreferenceForm .fa-building-columns {
+  color: goldenrod;
+}
+.PreferenceForm .fa-masks-theater {
+  color: black;
+}
+.PreferenceForm .fa-music {
+  color: black;
+}
+.PreferenceForm .fa-glasses {
+  color: black;
+}
+.PreferenceForm .fa-peace {
+  color: purple;
+}
+.PreferenceForm .fa-gem {
+  color: darkblue;
+}
+.PreferenceForm .fa-baby {
+  color: palevioletred;
+}
+.PreferenceForm .fa-rainbow {
+  color: deeppink;
+}
+.PreferenceForm .fa-people-group {
+  color: purple;
+}
+.PreferenceForm .fa-umbrella-beach {
+  color: burlywood;
+}
+.PreferenceForm .fa-graduation-cap {
+  color: darkslategray;
+}
+.PreferenceForm .fa-person-skiing {
+  color: orange;
+}
+.PreferenceForm .fa-tree {
+  color: forestgreen;
+}
+.PreferenceForm .fa-wine-glass {
+  color: darkred;
+}
+.PreferenceForm .fa-bag-shopping {
+  color: limegreen;
+}
+
+@media only screen and (min-width: 768px) {
+  .PreferenceForm {
+    width: 50%;
+  }
 }

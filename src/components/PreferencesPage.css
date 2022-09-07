@@ -13,9 +13,15 @@
   border-bottom: 1px solid lightgray;
   width: 85%;
   padding-bottom: 20px;
-  margin-bottom: 20px;
+  margin: 20px 20px;
 }
 
 .PreferencesPage div {
   font-weight: bolder;
+}
+
+@media only screen and (min-width: 768px) {
+  .PreferencesPage h2 {
+    width: 50%;
+  }
 }

@@ -149,7 +149,11 @@ const PreferenceForm = () => {
           onChange={(e) => setHistory(e.target.checked)}
         />
         <label htmlFor="history">
-          <div>🏺</div>History
+          <div>
+            {" "}
+            <i className="fa-solid fa-chess-rook"></i>
+          </div>
+          History
         </label>
 
         <input
