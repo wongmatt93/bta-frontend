@@ -30,9 +30,9 @@ const PlannedTrips = () => {
       <main className="PlannedTrips">
         <h2>Planned Trips</h2>
         <TransitionGroup component="ul">
-          {futureTrips.map((trip, index) => (
+          {futureTrips.map((trip) => (
             <CSSTransition
-              key={trip._id.cityName + trip._id.uid}
+              key={trip._id}
               classNames={{
                 enterActive:
                   "animate__animated animate__slideInLeft animate__faster",
@@ -41,7 +41,7 @@ const PlannedTrips = () => {
               }}
               timeout={1000}
             >
-              <PlannedTripCard trip={trip} key={index} />
+              <PlannedTripCard trip={trip} />
             </CSSTransition>
           ))}
         </TransitionGroup>

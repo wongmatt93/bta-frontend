@@ -2,14 +2,12 @@ import { FormEvent, useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
 import { PlannedTripsContext } from "../context/PlannedTripsContext";
-import VotedOnContext from "../context/VotedOnContext";
 import Business from "../models/Business";
 import Hotel from "../models/Hotel";
-import PlannedTrip from "../models/PlannedTrip";
 import SingleRoadGoatResponse from "../models/SingleRoadGoatResponse";
+import TheRealPlannedTrip from "../models/TheRealPlannedTrips";
 import { getHotelsByCity } from "../services/amadeusService";
 import { getCityInfoById } from "../services/roadGoatService";
-import { addSchedule, getScheduleByUid } from "../services/scheduleService";
 import {
   searchYelpArts,
   searchYelpBreakfast,
@@ -19,7 +17,7 @@ import "./PlanningPage.css";
 
 const PlanningPage = () => {
   const { user, votedOn } = useContext(AuthContext);
-  const { getAndSetTrips } = useContext(PlannedTripsContext);
+  const { addNewTrip } = useContext(PlannedTripsContext);
   const navigate = useNavigate();
   const id: string | undefined = useParams().id;
   const [details, setDetails] = useState<SingleRoadGoatResponse | null>(null);
@@ -72,67 +70,50 @@ const PlanningPage = () => {
     setHotel(hotels[index]);
   }, [hotels]);
 
-  const [trips, setTrips] = useState<PlannedTrip[]>([]);
-
-  useEffect(() => {
-    user && getScheduleByUid(user.uid).then((response) => setTrips(response));
-  }, [user]);
-
   const handleSubmit = (e: FormEvent): void => {
     e.preventDefault();
-    if (
-      !trips.some(
-        (trip) =>
-          trip._id.cityName === details!.data.attributes.name &&
-          trip._id.date1 === date1 &&
-          trip._id.date2 === date2 &&
-          trip._id.uid === user!.uid
-      )
-    ) {
-      const startDate = new Date(date1);
-      const endDate = new Date(date2);
-      const duration =
-        (endDate.getTime() - startDate.getTime()) / (1000 * 3600 * 24) + 1;
-      for (let i = 0; i < duration; i++) {
-        if (restaurants.length) {
-          const index: number = Math.floor(Math.random() * breakfast.length);
-          const lunchIndex: number = Math.floor(
-            Math.random() * restaurants.length
-          );
-          const dinnerIndex: number = Math.floor(
-            Math.random() * restaurants.length
-          );
 
-          const eventOneIndex: number = Math.floor(
-            Math.random() * events.length
-          );
-          const eventTwoIndex: number = Math.floor(
-            Math.random() * events.length
-          );
-          addSchedule({
-            breakfast: breakfast[index].name,
-            breakfastPhoto: breakfast[index].image_url,
-            lunch: restaurants[lunchIndex].name,
-            lunchPhoto: restaurants[lunchIndex].image_url,
-            dinner: restaurants[dinnerIndex].name,
-            dinnerPhoto: restaurants[dinnerIndex].image_url,
-            event1: events[eventOneIndex].name,
-            event1Photo: events[eventOneIndex].image_url,
-            event2: events[eventTwoIndex].name,
-            event2Photo: events[eventTwoIndex].image_url,
-            // hotel: duration > 1 ? hotel!.name : null,
-            date1,
-            date2,
-            uid: user!.uid,
-            cityName: details!.data.attributes.name,
-            cityPhoto,
-          }).then(() => getAndSetTrips(user!.uid));
-        }
+    const startDate = new Date(date1);
+    const endDate = new Date(date2);
+    const duration =
+      (endDate.getTime() - startDate.getTime()) / (1000 * 3600 * 24) + 1;
+    const newTrip: TheRealPlannedTrip = {
+      date1,
+      date2,
+      cityName: details!.data.attributes.name,
+      uid: user!.uid,
+      cityPhoto,
+      hotel: duration > 1 ? hotel!.name : null,
+      schedule: [],
+      photos: [],
+    };
+    for (let i = 0; i < duration; i++) {
+      if (restaurants.length) {
+        const index: number = Math.floor(Math.random() * breakfast.length);
+        const lunchIndex: number = Math.floor(
+          Math.random() * restaurants.length
+        );
+        const dinnerIndex: number = Math.floor(
+          Math.random() * restaurants.length
+        );
+        const eventOneIndex: number = Math.floor(Math.random() * events.length);
+        const eventTwoIndex: number = Math.floor(Math.random() * events.length);
+        newTrip.schedule.push({
+          breakfast: breakfast[index].name,
+          breakfastPhoto: breakfast[index].image_url,
+          lunch: restaurants[lunchIndex].name,
+          lunchPhoto: restaurants[lunchIndex].image_url,
+          dinner: restaurants[dinnerIndex].name,
+          dinnerPhoto: restaurants[dinnerIndex].image_url,
+          event1: events[eventOneIndex].name,
+          event1Photo: events[eventOneIndex].image_url,
+          event2: events[eventTwoIndex].name,
+          event2Photo: events[eventTwoIndex].image_url,
+        });
       }
-      navigate("/planned-trips");
-    } else {
-      alert("error");
     }
+    addNewTrip(newTrip);
+    navigate("/planned-trips");
   };
 
   return (

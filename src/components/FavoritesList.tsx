@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from "react";
 import AuthContext from "../context/AuthContext";
-import VotedOnContext from "../context/VotedOnContext";
 import VotedOn from "../models/VotedOn";
 import FavoriteCard from "./FavoriteCard";
 import "./FavoritesList.css";

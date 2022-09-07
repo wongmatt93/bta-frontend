@@ -7,7 +7,6 @@
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^27.5.2",
-    "@types/node": "^16.11.56",
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
     "animate.css": "^4.1.1",
@@ -47,6 +46,7 @@
     ]
   },
   "devDependencies": {
+    "@types/node": "^18.7.15",
     "@types/react-modal": "^3.13.1",
     "@types/react-transition-group": "^4.4.5"
   }

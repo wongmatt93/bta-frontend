@@ -1,5 +1,4 @@
 import SingleDaySchedule from "../models/SingleDaySchedule";
-import { getFullItinerary } from "../services/scheduleService";
 import "./SingleDayItinerary.css";
 
 interface Props {

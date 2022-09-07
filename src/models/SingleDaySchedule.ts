@@ -10,10 +10,4 @@ export default interface SingleDaySchedule {
   event1Photo: string;
   event2: string;
   event2Photo: string;
-  hotel?: string | null;
-  date1: string;
-  date2: string;
-  uid: string;
-  cityName: string;
-  cityPhoto: string;
 }

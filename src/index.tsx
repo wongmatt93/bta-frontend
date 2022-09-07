@@ -4,7 +4,6 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import AuthContextProvider from "./context/AuthContextProvider";
-import VotedOnContextProvider from "./context/VotedOnContextProvider";
 import { PlannedTripsContextProvider } from "./context/PlannedTripsContextProvider";
 
 const root = ReactDOM.createRoot(
@@ -13,11 +12,9 @@ const root = ReactDOM.createRoot(
 root.render(
   // <React.StrictMode>
   <AuthContextProvider>
-    <VotedOnContextProvider>
-      <PlannedTripsContextProvider>
-        <App />
-      </PlannedTripsContextProvider>
-    </VotedOnContextProvider>
+    <PlannedTripsContextProvider>
+      <App />
+    </PlannedTripsContextProvider>
   </AuthContextProvider>
   // </React.StrictMode>
 );
