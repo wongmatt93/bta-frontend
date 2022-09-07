@@ -62,16 +62,13 @@ const Gallery = () => {
         </form>
       </Modal>
 
-      <>
+      <div className="photo-container">
         {trip &&
-          trip.photos.length &&
+          trip.photos.length > 0 &&
           trip.photos.map((photo, index) => <img src={photo} key={index} />)}
-      </>
+      </div>
     </main>
   );
 };
 
 export default Gallery;
-function addPhotosToTrip(arg0: any, url: string, uid: any) {
-  throw new Error("Function not implemented.");
-}
