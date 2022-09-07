@@ -59,30 +59,19 @@ const CityDetails = ({ id }: Props) => {
     navigate("/recommendations");
   };
 
-  // const [isScrolling, setIsScrolling] = useState(true);
-  // let timer: ReturnType<typeof setTimeout> | null = null;
-
-  // useEffect(() => {
-  //   window.addEventListener("scroll", listenToScroll);
-  //   return () => window.removeEventListener("scroll", listenToScroll);
-  // }, []);
-
-  // const listenToScroll = () => {
-  //   setIsScrolling(true);
-  //   clearTimeout(timer!);
-  //   timer = setTimeout(() => {
-  //     setIsScrolling(false);
-  //   }, 2000);
-  // };
-
   return (
     <div className="CityDetails">
       {details && currentUserProfile!.preferences! && (
         <>
           <div className="image-container">
-            <button onClick={() => navigate(`/plan-your-trip/${id}`)}>
-              Get Itinerary
-            </button>
+            {votedOn.some((item) => {
+              return item.cityId === id && item.favorite;
+            }) && (
+              <button onClick={() => navigate(`/plan-your-trip/${id}`)}>
+                Get Itinerary
+              </button>
+            )}
+
             <img
               className="details-img"
               src={photo}
@@ -92,7 +81,7 @@ const CityDetails = ({ id }: Props) => {
           <div className="info-container">
             <div className="name-rating-container">
               {" "}
-              <h2>{details.data.attributes.name}</h2>
+              <h3>{details.data.attributes.name}</h3>
               <p className="rating-text">
                 <i className="fa-solid fa-star"></i>
                 {details.data.attributes.average_rating.toFixed(1)}

@@ -15,10 +15,10 @@ const FavoriteCard = ({ favorite, remove }: Props) => {
   };
 
   return (
-    <li className="FavoriteCard">
-      <img onClick={handleClick} src={favorite.photo} alt={favorite.cityName} />
+    <li onClick={handleClick} className="FavoriteCard">
+      <img src={favorite.photo} alt={favorite.cityName} />
       <h3>{favorite.cityName}</h3>
-      <button onClick={remove}>Delete</button>
+      {/* <button onClick={remove}>Delete</button> */}
     </li>
   );
 };

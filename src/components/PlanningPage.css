@@ -38,3 +38,71 @@
   font-family: "Oswald", sans-serif;
   font-size: 24px;
 }
+
+.planning-page-modal h3 {
+  font-family: "Oswald", sans-serif;
+  font-size: 17px;
+}
+
+.planning-page-overlay-modal {
+  display: flex;
+  justify-content: center;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.1);
+  position: fixed;
+}
+
+.planning-page-modal {
+  padding: 15px;
+  height: 80%;
+  width: 85%;
+  margin-top: 90px;
+  position: relative;
+  background-color: #ebebeb;
+  overflow: scroll;
+}
+
+.planning-page-modal .thumbs-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.planning-page-modal i {
+  font-size: 45px;
+  cursor: pointer;
+}
+
+.planning-page-modal .fa-thumbs-up {
+  font-size: 65px;
+  cursor: pointer;
+}
+
+.planning-page-modal .thumbs-up:hover {
+  transform: scale(1.2);
+  transition: 0.5s ease;
+  color: #f0b202;
+}
+
+.planning-page-modal .thumbs-down:hover {
+  transform: scale(1.2);
+  transition: 0.5s ease;
+  color: #f0b202;
+}
+
+.planning-page-modal .thumbs-down {
+  transform: rotate(180deg);
+}
+
+@media only screen and (min-width: 768px) {
+  .PlannedTripItinerary .open-modal-button {
+    font-size: 30px;
+    margin-top: 25px;
+  }
+
+  .planning-page-modal {
+    width: 50%;
+  }
+}

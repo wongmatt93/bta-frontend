@@ -30,8 +30,8 @@
 
 .PastTripCard img {
   border-radius: 50%;
-  height: 80px;
-  width: 80px;
+  height: 120px;
+  width: 120px;
 }
 
 .PastTripCard i {
@@ -40,4 +40,44 @@
   position: absolute;
   top: 10px;
   right: 10px;
+}
+
+.PastTripCard .button-container {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.PastTripCard .gallery-nav-button {
+  background-color: #f0b202;
+  font-family: "Oswald", sans-serif;
+  font-size: 15px;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 30px;
+  margin-top: 10px;
+}
+
+.PastTripCard .gallery-nav-button:hover {
+  background-color: black;
+  color: #f0b202;
+}
+
+@media only screen and (min-width: 768px) {
+  .PastTripCard {
+    margin-bottom: 30px;
+  }
+
+  .PastTripCard img {
+    height: 150px;
+    width: 150px;
+  }
+
+  .PastTripCard h3 {
+    font-size: 30px;
+  }
+
+  .PastTripCard h4 {
+    font-size: 17px;
+  }
 }

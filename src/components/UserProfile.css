@@ -7,11 +7,12 @@
 .UserProfile img {
   height: 125px;
   border-radius: 50%;
+  margin-top: 25px;
 }
 
 .UserProfile h2 {
   font-family: "Merriweather", serif;
-  margin-top: 15px;
+  margin: 20px 0px 35px 0px;
 }
 
 .UserProfile nav {
@@ -56,5 +57,11 @@
   border: none;
   font-family: "Oswald", sans-serif;
   font-size: 24px;
-  margin: 20px;
+  margin-top: 65px;
+}
+
+@media only screen and (min-width: 768px) {
+  .UserProfile nav {
+    font-size: 25px;
+  }
 }
