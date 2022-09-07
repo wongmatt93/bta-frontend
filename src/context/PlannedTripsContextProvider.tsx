@@ -1,7 +1,9 @@
 import { ReactNode, useContext, useEffect, useState } from "react";
 import TheRealPlannedTrip from "../models/TheRealPlannedTrips";
 import {
+  addPhotos,
   addPlannedTrip,
+  deleteFullItinerary,
   getPlannedTripsByUid,
 } from "../services/theRealPlannedTripsService";
 import AuthContext from "./AuthContext";
@@ -29,17 +31,13 @@ export const PlannedTripsContextProvider = ({ children }: Props) => {
     currentUserProfile && getAndSetTrips(currentUserProfile.uid);
   }, [currentUserProfile]);
 
-  // const getAndSetTrips = (uid: string) => {
-  //   getScheduleByUid(uid).then((response) => setTrips(response));
-  // };
+  const deleteFullTrip = (tripId: string, uid: string) => {
+    deleteFullItinerary(tripId).then(() => getAndSetTrips(uid));
+  };
 
-  // const deleteFullTrip = (trip: PlannedTrip, uid: string) => {
-  //   deleteFullItinerary(trip).then(() => getAndSetTrips(uid));
-  // };
-
-  // useEffect(() => {
-  //   currentUserProfile && getAndSetTrips(currentUserProfile.uid);
-  // }, [currentUserProfile]);
+  const addPhotosToTrip = (tripId: string, photo: string, uid: string) => {
+    addPhotos(tripId, photo).then(() => getAndSetTrips(uid));
+  };
 
   useEffect(() => {
     let today: Date = new Date();
@@ -65,7 +63,15 @@ export const PlannedTripsContextProvider = ({ children }: Props) => {
 
   return (
     <PlannedTripsContext.Provider
-      value={{ trips, pastTrips, futureTrips, getAndSetTrips, addNewTrip }}
+      value={{
+        trips,
+        pastTrips,
+        futureTrips,
+        getAndSetTrips,
+        addNewTrip,
+        deleteFullTrip,
+        addPhotosToTrip,
+      }}
     >
       {children}
     </PlannedTripsContext.Provider>

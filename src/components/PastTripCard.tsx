@@ -2,6 +2,7 @@ import { User } from "firebase/auth";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { FormEvent, useContext, useRef, useState } from "react";
 import AuthContext from "../context/AuthContext";
+import { PlannedTripsContext } from "../context/PlannedTripsContext";
 import { storage } from "../firebaseConfig";
 import SingleDaySchedule from "../models/SingleDaySchedule";
 import TheRealPlannedTrip from "../models/TheRealPlannedTrips";
@@ -13,8 +14,7 @@ interface Props {
 }
 
 const PastTripCard = ({ trip }: Props) => {
-  const { user } = useContext(AuthContext);
-  // const { deleteFullTrip } = useContext(PlannedTripsContext);
+  const { deleteFullTrip, addPhotosToTrip } = useContext(PlannedTripsContext);
 
   const startDate = new Date(trip.date1);
   const endDate = new Date(trip.date2);
@@ -29,7 +29,7 @@ const PastTripCard = ({ trip }: Props) => {
       const storageRef = ref(storage, `trip_photos/${file.name}`);
       uploadBytes(storageRef, file).then((snapshot) => {
         getDownloadURL(snapshot.ref).then((url) => {
-          console.log(url);
+          addPhotosToTrip(trip._id!, url, trip.uid);
         });
       });
     }
@@ -51,10 +51,10 @@ const PastTripCard = ({ trip }: Props) => {
         <input ref={fileInputRef} type="file" />
         <button>Upload Pics!</button>
       </form>
-      {/* <i
+      <i
         className="fa-solid fa-trash-can"
-        onClick={() => deleteFullTrip(trip, user!.uid)}
-      ></i> */}
+        onClick={() => deleteFullTrip(trip._id!, trip.uid)}
+      ></i>
     </li>
   );
 };

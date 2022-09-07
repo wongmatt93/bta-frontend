@@ -4,9 +4,10 @@ import "./FavoriteCard.css";
 
 interface Props {
   favorite: VotedOn;
+  remove: () => void;
 }
 
-const FavoriteCard = ({ favorite }: Props) => {
+const FavoriteCard = ({ favorite, remove }: Props) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -14,9 +15,10 @@ const FavoriteCard = ({ favorite }: Props) => {
   };
 
   return (
-    <li onClick={handleClick} className="FavoriteCard">
-      <img src={favorite.photo} alt={favorite.cityName} />
+    <li className="FavoriteCard">
+      <img onClick={handleClick} src={favorite.photo} alt={favorite.cityName} />
       <h3>{favorite.cityName}</h3>
+      <button onClick={remove}>Delete</button>
     </li>
   );
 };

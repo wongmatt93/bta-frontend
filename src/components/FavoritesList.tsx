@@ -7,7 +7,8 @@ import "./FavoritesList.css";
 const FavoritesList = () => {
   const [favorites, setFavorites] = useState<VotedOn[]>([]);
 
-  const { votedOn } = useContext(AuthContext);
+  const { votedOn, currentUserProfile, updateVotedOnCity } =
+    useContext(AuthContext);
 
   useEffect(() => {
     setFavorites(votedOn.filter((item) => item.favorite));
@@ -16,7 +17,13 @@ const FavoritesList = () => {
   return (
     <ul className="FavoritesList">
       {favorites.map((favorite, index) => (
-        <FavoriteCard key={index} favorite={favorite} />
+        <FavoriteCard
+          key={index}
+          favorite={favorite}
+          remove={() =>
+            updateVotedOnCity(currentUserProfile!.uid, favorite.cityName, false)
+          }
+        />
       ))}
     </ul>
   );
