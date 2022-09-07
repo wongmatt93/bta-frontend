@@ -25,7 +25,7 @@ const PlannedTripCard = ({ trip }: Props) => {
           </h4>
         </div>
       </div>
-      <PlannedTripItinerary itinerary={trip.schedule} />
+      <PlannedTripItinerary itinerary={trip.schedule} hotel={trip.hotel} />
       <i
         className="fa-solid fa-trash-can"
         onClick={() => deleteFullTrip(trip._id!, trip.uid)}

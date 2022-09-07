@@ -9,9 +9,10 @@ Modal.setAppElement("#root");
 
 interface Props {
   itinerary: SingleDaySchedule[];
+  hotel: string | null;
 }
 
-const PlannedTripItinerary = ({ itinerary }: Props) => {
+const PlannedTripItinerary = ({ itinerary, hotel }: Props) => {
   const [modalIsOpen, setIsOpen] = useState(false);
 
   function openModal() {
@@ -33,9 +34,7 @@ const PlannedTripItinerary = ({ itinerary }: Props) => {
         onRequestClose={closeModal}
         contentLabel="Example Modal"
       >
-        {/* {itinerary.length && itinerary[0].hotel && (
-          <h3>HOTEL - {itinerary[0].hotel}</h3>
-        )} */}
+        {hotel && <h3>HOTEL - {hotel}</h3>}
         {itinerary.map((item, index) => (
           <SingleDayItinerary schedule={item} index={index} key={index} />
         ))}

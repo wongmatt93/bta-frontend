@@ -20,4 +20,5 @@ export const addPhotos = async (
   tripId: string,
   photo: string
 ): Promise<string> =>
-  (await axios.put(`${baseURL}/planned_trips/${tripId}/photos`, photo)).data;
+  (await axios.put(`${baseURL}/planned_trips/${tripId}/photos`, { photo }))
+    .data;

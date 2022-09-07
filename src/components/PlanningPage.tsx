@@ -14,6 +14,10 @@ import {
   searchYelpRestaurants,
 } from "../services/yelpService";
 import "./PlanningPage.css";
+import Modal from "react-modal";
+import SingleDayItinerary from "./SingleDayItinerary";
+
+Modal.setAppElement("#root");
 
 const PlanningPage = () => {
   const { user, votedOn } = useContext(AuthContext);
@@ -29,6 +33,15 @@ const PlanningPage = () => {
   const [date1, setDate1] = useState("");
   const [date2, setDate2] = useState("");
   const [cityPhoto, setCityPhoto] = useState("");
+  const [trip, setTrip] = useState<TheRealPlannedTrip | null>(null);
+  const [modalIsOpen, setIsOpen] = useState(false);
+
+  function openModal() {
+    setIsOpen(true);
+  }
+  function closeModal() {
+    setIsOpen(false);
+  }
 
   useEffect(() => {
     if (id) {
@@ -72,7 +85,6 @@ const PlanningPage = () => {
 
   const handleSubmit = (e: FormEvent): void => {
     e.preventDefault();
-
     const startDate = new Date(date1);
     const endDate = new Date(date2);
     const duration =
@@ -112,8 +124,9 @@ const PlanningPage = () => {
         });
       }
     }
+    setTrip(newTrip);
     addNewTrip(newTrip);
-    navigate("/planned-trips");
+    openModal();
   };
 
   return (
@@ -140,6 +153,22 @@ const PlanningPage = () => {
 
         <button>Submit</button>
       </form>
+      <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
+        {trip &&
+          trip.schedule.map((day, index) => (
+            <SingleDayItinerary schedule={day} key={index} index={index} />
+          ))}
+        <div className="thumbs-container">
+          <i
+            className="fa-solid fa-thumbs-up thumbs-up"
+            onClick={() => navigate("/planned-trips")}
+          ></i>
+          <i
+            className="fa-solid fa-thumbs-up thumbs-down"
+            onClick={() => navigate("/planned-trips")}
+          ></i>
+        </div>
+      </Modal>
     </main>
   );
 };
