@@ -28,3 +28,15 @@ export const addVotedOnCity = async (
   newCity: VotedOn
 ): Promise<VotedOn> =>
   (await axios.put(`${baseURL}/user_profiles/${uid}/voted-on`, newCity)).data;
+
+export const changeVotedOnCity = async (
+  uid: string,
+  city: string,
+  favorite: boolean
+): Promise<VotedOn> =>
+  (
+    await axios.put(
+      `${baseURL}/user_profiles/${uid}/favorites/${city}`,
+      favorite
+    )
+  ).data;

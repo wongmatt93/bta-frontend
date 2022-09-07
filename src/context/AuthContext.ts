@@ -11,6 +11,7 @@ export interface AuthContextModel {
   votedOn: VotedOn[];
   updateUserPreferences: (preferences: Preferences) => void;
   updateUserVotedOn: (uid: string, votedOn: VotedOn) => void;
+  updateVotedOnCity: (uid: string, city: string, favorite: boolean) => void;
 }
 const defaultValue: AuthContextModel = {
   user: null,
@@ -20,6 +21,7 @@ const defaultValue: AuthContextModel = {
   votedOn: [],
   updateUserPreferences: () => {},
   updateUserVotedOn: () => {},
+  updateVotedOnCity: () => {},
 };
 const AuthContext = createContext(defaultValue);
 export default AuthContext;

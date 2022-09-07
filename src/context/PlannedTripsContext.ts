@@ -7,7 +7,8 @@ interface PlannedTripsContextModel {
   futureTrips: TheRealPlannedTrip[];
   getAndSetTrips: (uid: string) => void;
   addNewTrip: (trip: TheRealPlannedTrip) => void;
-  // deleteFullTrip: (trip: PlannedTrip, uid: string) => void;
+  deleteFullTrip: (tripId: string, uid: string) => void;
+  addPhotosToTrip: (tripId: string, photo: string, uid: string) => void;
 }
 
 const defaultValues: PlannedTripsContextModel = {
@@ -16,7 +17,8 @@ const defaultValues: PlannedTripsContextModel = {
   futureTrips: [],
   getAndSetTrips: () => {},
   addNewTrip: () => {},
-  // deleteFullTrip: () => {},
+  deleteFullTrip: () => {},
+  addPhotosToTrip: () => {},
 };
 
 export const PlannedTripsContext = createContext(defaultValues);

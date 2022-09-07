@@ -6,6 +6,7 @@ import UserProfile from "../models/UserProfile";
 import {
   addNewProfile,
   addVotedOnCity,
+  changeVotedOnCity,
   getAllProfiles,
 } from "../services/userProfileService";
 import Preferences from "../models/Preferences";
@@ -36,6 +37,17 @@ const AuthContextProvider = ({ children }: Props) => {
       addVotedOnCity(uid, votedOn).then(() =>
         getAllProfiles().then((response) => setProfiles(response))
       );
+  };
+
+  const updateVotedOnCity = (
+    uid: string,
+    city: string,
+    favorite: boolean
+  ): void => {
+    currentUserProfile &&
+      changeVotedOnCity(uid, city, favorite).then(() => {
+        getAllProfiles().then((response) => setProfiles(response));
+      });
   };
 
   useEffect(() => {
@@ -88,6 +100,7 @@ const AuthContextProvider = ({ children }: Props) => {
         votedOn,
         updateUserPreferences,
         updateUserVotedOn,
+        updateVotedOnCity,
       }}
     >
       {children}

@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import { PlannedTripsContext } from "../context/PlannedTripsContext";
 import TheRealPlannedTrip from "../models/TheRealPlannedTrips";
 import "./PlannedTripCard.css";
 import PlannedTripItinerary from "./PlannedTripItinerary";
@@ -7,7 +9,7 @@ interface Props {
 }
 
 const PlannedTripCard = ({ trip }: Props) => {
-  // const { deleteFullTrip } = useContext(PlannedTripsContext);
+  const { deleteFullTrip } = useContext(PlannedTripsContext);
 
   const startDate = new Date(trip.date1);
   const endDate = new Date(trip.date2);
@@ -24,10 +26,10 @@ const PlannedTripCard = ({ trip }: Props) => {
         </div>
       </div>
       <PlannedTripItinerary itinerary={trip.schedule} />
-      {/* <i
+      <i
         className="fa-solid fa-trash-can"
-        onClick={() => deleteFullTrip(trip, user!.uid)}
-      ></i> */}
+        onClick={() => deleteFullTrip(trip._id!, trip.uid)}
+      ></i>
     </li>
   );
 };
