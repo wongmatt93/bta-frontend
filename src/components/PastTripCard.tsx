@@ -46,7 +46,7 @@ const PastTripCard = ({ trip }: Props) => {
           </h4>
         </div>
       </div>
-      <PlannedTripItinerary itinerary={trip.schedule} />
+      <PlannedTripItinerary itinerary={trip.schedule} hotel={trip.hotel} />
       <form onSubmit={handleSubmit}>
         <input ref={fileInputRef} type="file" />
         <button>Upload Pics!</button>
@@ -55,6 +55,11 @@ const PastTripCard = ({ trip }: Props) => {
         className="fa-solid fa-trash-can"
         onClick={() => deleteFullTrip(trip._id!, trip.uid)}
       ></i>
+      <>
+        {trip.photos.map((photo, index) => (
+          <img src={photo} key={index} />
+        ))}
+      </>
     </li>
   );
 };
