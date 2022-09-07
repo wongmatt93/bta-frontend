@@ -7,3 +7,9 @@
 .PastTripsPage h2 {
   margin: 20px;
 }
+
+@media only screen and (min-width: 768px) {
+  .PastTripsPage ul {
+    width: 50%;
+  }
+}

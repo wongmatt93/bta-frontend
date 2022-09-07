@@ -28,6 +28,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-top: 15px;
 }
 
 .CityDetails h2 {
@@ -49,13 +50,14 @@
 }
 
 .CityDetails .summary {
-  font-family: "Meriweather", serif;
+  font-family: "Merriweather", serif;
   font-style: normal;
   font-weight: 400;
   font-size: 15px;
-  line-height: 20px;
+  line-height: 25px;
   text-align: justify;
   width: 85%;
+  margin: 20px 0;
 }
 
 .CityDetails ul {
@@ -90,11 +92,13 @@
 .CityDetails .thumbs-up:hover {
   transform: scale(1.2);
   transition: 0.5s ease;
+  color: #f0b202;
 }
 
 .CityDetails .thumbs-down:hover {
   transform: scale(1.2) rotate(180deg);
   transition: 0.5s ease;
+  color: #f0b202;
 }
 
 .CityDetails .thumbs-down {
@@ -123,6 +127,7 @@
     flex-direction: row;
     height: 100%;
     align-items: center;
+    margin-top: 20px;
   }
 
   .CityDetails .image-container {
@@ -137,8 +142,28 @@
     width: 50%;
   }
 
+  .CityDetails .summary {
+    margin: 20px;
+    background-color: white;
+    padding: 30px 35px;
+    border-radius: 5px;
+  }
+
   .CityDetails .details-thumbs-container {
     position: static;
     color: black;
+    margin-top: 50px;
+  }
+
+  .CityDetails .fa-thumbs-up {
+    font-size: 65px;
+  }
+
+  .CityDetails img {
+    box-shadow: 15px 15px 0px rgba(240, 178, 2, 1);
+  }
+
+  .CityDetails h3 {
+    font-size: 30px;
   }
 }

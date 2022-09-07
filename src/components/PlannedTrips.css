@@ -11,3 +11,9 @@
 .PlannedTrips ul {
   width: 85%;
 }
+
+@media only screen and (min-width: 768px) {
+  .PlannedTrips ul {
+    width: 50%;
+  }
+}

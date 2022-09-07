@@ -18,6 +18,7 @@ import { useContext, useEffect } from "react";
 import AuthContext from "./context/AuthContext";
 import CityDetailsPage from "./components/CityDetailsPage";
 import PastTripsPage from "./components/PastTripsPage";
+import Gallery from "./components/Gallery";
 
 function App() {
   const { user } = useContext(AuthContext);
@@ -40,6 +41,7 @@ function App() {
           <Route path="/user-profile" element={<UserProfile />} />
           <Route path="/planned-trips" element={<PlannedTrips />} />
           <Route path="/past-trips" element={<PastTripsPage />} />
+          <Route path="/gallery/:tripId" element={<Gallery />} />
           <Route path="*" element={<Navigate to="/recommendations" />} />
         </Routes>
       </Router>

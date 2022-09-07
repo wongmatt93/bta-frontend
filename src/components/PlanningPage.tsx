@@ -153,7 +153,15 @@ const PlanningPage = () => {
 
         <button>Submit</button>
       </form>
-      <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        overlayClassName="planning-page-overlay-modal"
+        className="planning-page-modal"
+      >
+        <h3>Review Your Trip</h3>
+        {trip && trip.hotel && <h3>HOTEL - {trip.hotel}</h3>}
+
         {trip &&
           trip.schedule.map((day, index) => (
             <SingleDayItinerary schedule={day} key={index} index={index} />

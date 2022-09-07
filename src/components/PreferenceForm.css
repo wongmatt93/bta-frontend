@@ -57,3 +57,15 @@ input:checked + label {
 .PreferenceForm button:hover {
   background-color: white;
 }
+
+.PreferenceForm i {
+  font-size: 20px;
+}
+
+.PreferenceForm .fa-heart {
+  color: pink;
+}
+
+.PreferenceForm .fa-bowl-food {
+  color: firebrick;
+}

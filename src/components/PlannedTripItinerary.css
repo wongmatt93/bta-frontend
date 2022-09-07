@@ -8,6 +8,11 @@
   margin-top: 10px;
 }
 
+.PlannedTripItinerary .open-modal-button:hover {
+  background-color: black;
+  color: #f0b202;
+}
+
 .modal h3 {
   font-family: "Oswald", sans-serif;
   font-size: 17px;
@@ -40,4 +45,15 @@
   right: 15px;
   font-size: 20px;
   cursor: pointer;
+}
+
+@media only screen and (min-width: 768px) {
+  .PlannedTripItinerary .open-modal-button {
+    font-size: 30px;
+    margin-top: 25px;
+  }
+
+  .modal {
+    width: 50%;
+  }
 }
