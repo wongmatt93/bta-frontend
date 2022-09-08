@@ -80,4 +80,9 @@
   .PastTripCard h4 {
     font-size: 17px;
   }
+
+  .PastTripCard .gallery-nav-button {
+    font-size: 30px;
+    margin-top: 25px;
+  }
 }

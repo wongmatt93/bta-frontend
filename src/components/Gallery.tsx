@@ -19,7 +19,6 @@ const Gallery = () => {
   useEffect(() => {
     setTrip(pastTrips.find((item) => item._id === tripId)!);
   }, [pastTrips, tripId]);
-  console.log(tripId);
 
   function openModal() {
     setIsOpen(true);

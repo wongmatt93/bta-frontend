@@ -1,8 +1,10 @@
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
+import CityDescription from "../models/CityDescriptions";
 import Preferences from "../models/Preferences";
 import SingleRoadGoatResponse from "../models/SingleRoadGoatResponse";
+import { getCityByName } from "../services/cityDescriptionService";
 import {
   getCityInfoById,
   getCityInfoByName,
@@ -11,111 +13,106 @@ import { getWikiSummary } from "../services/wikipediaService";
 import "./CityDetails.css";
 
 interface Props {
-  id: string | undefined;
+  city: string | undefined;
 }
 
-const CityDetails = ({ id }: Props) => {
+const CityDetails = ({ city }: Props) => {
   const { user, currentUserProfile, votedOn, updateUserVotedOn } =
     useContext(AuthContext);
   const navigate = useNavigate();
-  const [details, setDetails] = useState<SingleRoadGoatResponse | null>(null);
+  const [details, setDetails] = useState<CityDescription | null>(null);
   const [summary, setSummary] = useState("");
   const [name, setName] = useState("");
   const [photo, setPhoto] = useState("");
-  const [knownFor, setKnownFor] = useState<any[]>([]);
+  const [knownFor, setKnownFor] = useState<string[]>([]);
 
   useEffect(() => {
-    id &&
-      getCityInfoById(id).then((response) => {
+    city &&
+      getCityByName(city).then((response) => {
         setDetails(response);
       });
-  }, [id]);
+  }, [city]);
 
   useEffect(() => {
     if (details) {
-      setName(details.data.attributes.short_name);
-      setKnownFor(details.included.filter((item) => item.type === "known_for"));
-      getWikiSummary(details.data.attributes.name).then((response) =>
-        setSummary(response.extract)
-      );
+      setName(city!);
+      setKnownFor(details.knownFor);
+      setSummary(details.cityDescription);
+      setPhoto(details.photo);
     }
   }, [details]);
-
-  useEffect(() => {
-    name &&
-      getCityInfoByName(name).then((response) =>
-        setPhoto(response.included[0].attributes.image?.full!)
-      );
-  }, [name]);
 
   const handleClick = (favorite: boolean): void => {
     updateUserVotedOn(user!.uid, {
       cityName: name,
-      cityId: id!,
+      cityId: details!.cityId,
       uid: user!.uid,
       favorite: favorite,
       photo,
     });
-    navigate("/recommendations");
+    favorite
+      ? navigate(`/city-details/${details!.cityName}`)
+      : navigate("/recommendations");
   };
 
   return (
     <div className="CityDetails">
-      {details && currentUserProfile!.preferences! && (
+      {details && currentUserProfile && (
         <>
           <div className="image-container">
             {votedOn.some((item) => {
-              return item.cityId === id && item.favorite;
+              return item.cityId === details.cityId && item.favorite;
             }) && (
-              <button onClick={() => navigate(`/plan-your-trip/${id}`)}>
+              <button
+                onClick={() => navigate(`/plan-your-trip/${details.cityId}`)}
+              >
                 Get Itinerary
               </button>
             )}
-
-            <img
-              className="details-img"
-              src={photo}
-              alt={details.data.attributes.name}
-            />
+            <img className="details-img" src={photo} alt={name} />
           </div>
           <div className="info-container">
             <div className="name-rating-container">
               {" "}
-              <h3>{details.data.attributes.name}</h3>
+              <h3>{name}</h3>
               <p className="rating-text">
                 <i className="fa-solid fa-star"></i>
-                {details.data.attributes.average_rating.toFixed(1)}
+                {details.rating}
               </p>
             </div>
             <p className="summary">{summary}</p>
-            <ul>
-              {knownFor.map((item, index) => {
-                const known: keyof Preferences = item.attributes.name
-                  .replace(
-                    /(?:^\w|[A-Z]|\b\w)/g,
-                    function (word: string, index: number) {
-                      return index === 0
-                        ? word.toLowerCase()
-                        : word.toUpperCase();
-                    }
-                  )
-                  .replace(/\s+/g, "");
-                return (
-                  <li
-                    key={index}
-                    style={
-                      currentUserProfile!.preferences![known]
-                        ? { backgroundColor: "#f0b202" }
-                        : { backgroundColor: "#ededed" }
-                    }
-                  >
-                    {item.attributes.name}
-                  </li>
-                );
-              })}
-            </ul>
+            {knownFor && (
+              <ul>
+                {knownFor.map((item, index) => {
+                  const known: string = item
+                    .replace(
+                      /(?:^\w|[A-Z]|\b\w)/g,
+                      function (word: string, index: number) {
+                        return index === 0
+                          ? word.toLowerCase()
+                          : word.toUpperCase();
+                      }
+                    )
+                    .replace(/\s+/g, "");
+                  return (
+                    <li
+                      key={index}
+                      style={
+                        currentUserProfile.preferences![
+                          known as keyof typeof currentUserProfile.preferences
+                        ]
+                          ? { backgroundColor: "#f0b202" }
+                          : { backgroundColor: "#ededed" }
+                      }
+                    >
+                      {item}
+                    </li>
+                  );
+                })}
+              </ul>
+            )}
             {!votedOn.some((item) => {
-              return item.cityId === id && item.favorite;
+              return item.cityId === details.cityId && item.favorite;
             }) && (
               <div className="details-thumbs-container">
                 <i

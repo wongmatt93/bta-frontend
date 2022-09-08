@@ -30,7 +30,7 @@ export const getHotelsByCity = async (
     await axios.get(
       "https://test.api.amadeus.com/v1/reference-data/locations/hotels/by-geocode",
       {
-        params: { latitude, longitude, ratings: "1,2,3" },
+        params: { latitude, longitude, ratings: "1,2", radius: 30 },
         headers: {
           Authorization: `Bearer ${token}`,
         },

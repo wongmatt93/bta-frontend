@@ -6,12 +6,12 @@ import "./CityDetailsPage.css";
 import { useEffect, useState } from "react";
 
 const CityDetailsPage = () => {
-  const id: string | undefined = useParams().id;
+  const name: string | undefined = useParams().name;
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
     setLoaded(true);
-  }, []);
+  }, [name]);
 
   return (
     <CSSTransition
@@ -22,7 +22,7 @@ const CityDetailsPage = () => {
       timeout={1000}
     >
       <main className="CityDetailsPage">
-        <CityDetails id={id} />
+        <CityDetails city={name} />
       </main>
     </CSSTransition>
   );

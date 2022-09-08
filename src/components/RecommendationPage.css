@@ -18,6 +18,10 @@
   text-align: left;
 }
 
+.RecommendationPage .out-text {
+  text-align: center;
+}
+
 .RecommendationPage .thumbs-container {
   display: flex;
   justify-content: space-around;

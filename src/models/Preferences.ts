@@ -11,7 +11,7 @@ export default interface Preferences {
   hippie: boolean;
   posh: boolean;
   familyFriendly: boolean;
-  lgbtScene: boolean;
+  lGBTScene: boolean;
   diversity: boolean;
   beachTown: boolean;
   collegeTown: boolean;

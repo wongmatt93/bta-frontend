@@ -12,6 +12,11 @@
 
 .SingleDayItinerary p {
   font-size: 15px;
+  position: absolute;
+  z-index: 1;
+  color: whitesmoke;
+  top: 5px;
+  left: 5px;
 }
 
 .SingleDayItinerary .img-container {
@@ -30,4 +35,5 @@
   left: -9999px;
   right: -9999px;
   margin: auto;
+  filter: brightness(50%);
 }

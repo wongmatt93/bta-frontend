@@ -8,6 +8,7 @@
   background-position: center;
   background-size: 150%;
   margin-top: 0 !important;
+  overflow: hidden;
 }
 
 .LandingPage .logo-container {
@@ -39,6 +40,42 @@
   font-size: 20px;
   color: #fff;
   margin-top: 10px;
+}
+
+.LandingPage .hinge {
+  transform-origin: top left;
+  display: inline-block;
+  animation: hinge 4s 2s ease-in-out forwards;
+}
+
+@keyframes hinge {
+  15% {
+    transform: rotate(120deg);
+  }
+  30% {
+    transform: rotate(60deg);
+  }
+  40% {
+    transform: rotate(110deg);
+  }
+  50% {
+    transform: rotate(70deg);
+  }
+  60% {
+    transform: rotate(100deg);
+  }
+  70% {
+    transform: rotate(80deg);
+  }
+  80% {
+    transform: rotate(95deg);
+  }
+  90% {
+    transform: rotate(85deg);
+  }
+  100% {
+    transform: rotate(90deg);
+  }
 }
 
 .LandingPage .sign-in-button-container {
@@ -91,6 +128,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  }
+  .LandingPage .button-p-container p {
+    text-align: center;
   }
 
   .LandingPage .button-p-container p {

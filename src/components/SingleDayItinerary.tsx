@@ -10,24 +10,25 @@ const SingleDayItinerary = ({ schedule, index }: Props) => {
   return (
     <div className="SingleDayItinerary">
       <h3>DAY {index + 1}</h3>
-      <p>BREAKFAST - {schedule.breakfast}</p>
+
       <div className="img-container">
+        <p>BREAKFAST - {schedule.breakfast}</p>
         <img src={schedule.breakfastPhoto} alt="" />
       </div>
-      <p>ACTIVITY - {schedule.event1}</p>
       <div className="img-container">
+        <p>ACTIVITY - {schedule.event1}</p>
         <img src={schedule.event1Photo} alt="" />
       </div>
-      <p>LUNCH - {schedule.lunch}</p>
       <div className="img-container">
+        <p>LUNCH - {schedule.lunch}</p>
         <img src={schedule.lunchPhoto} alt="" />
       </div>
-      <p>ACTIVITY - {schedule.event2}</p>
       <div className="img-container">
+        <p>ACTIVITY - {schedule.event2}</p>
         <img src={schedule.event2Photo} alt="" />
       </div>
-      <p>DINNER - {schedule.dinner}</p>
       <div className="img-container">
+        <p>DINNER - {schedule.dinner}</p>
         <img src={schedule.dinnerPhoto} alt="" />
       </div>
     </div>
