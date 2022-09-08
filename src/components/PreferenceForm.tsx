@@ -370,6 +370,7 @@ const PreferenceForm = () => {
         <button className="update-pref-button">
           <span>Update Preferences</span>
           <img
+            className="checkmark"
             src="https://i.cloudup.com/2ZAX3hVsBE-3000x3000.png"
             height="62"
             width="62"
