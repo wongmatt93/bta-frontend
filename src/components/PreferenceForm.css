@@ -223,7 +223,7 @@ input:checked + label {
   }
 }
 
-img {
+.PreferenceForm .checkmark {
   position: absolute;
   top: 0;
   left: 0;
