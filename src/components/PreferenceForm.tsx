@@ -20,7 +20,7 @@ const PreferenceForm = () => {
   const [hippie, setHippie] = useState(false);
   const [posh, setPosh] = useState(false);
   const [familyFriendly, setFamilyFriendly] = useState(false);
-  const [lgbtScene, setLgbtScene] = useState(false);
+  const [lGBTScene, setLgbtScene] = useState(false);
   const [diversity, setDiversity] = useState(false);
   const [beachTown, setBeachTown] = useState(false);
   const [collegeTown, setCollegeTown] = useState(false);
@@ -44,7 +44,7 @@ const PreferenceForm = () => {
       hippie,
       posh,
       familyFriendly,
-      lgbtScene,
+      lGBTScene,
       diversity,
       beachTown,
       collegeTown,
@@ -71,7 +71,7 @@ const PreferenceForm = () => {
       setHippie(preferences.hippie);
       setPosh(preferences.posh);
       setFamilyFriendly(preferences.familyFriendly);
-      setLgbtScene(preferences.lgbtScene);
+      setLgbtScene(preferences.lGBTScene);
       setDiversity(preferences.diversity);
       setBeachTown(preferences.beachTown);
       setCollegeTown(preferences.collegeTown);
@@ -258,7 +258,7 @@ const PreferenceForm = () => {
           type="checkbox"
           name="lgbtScene"
           id="lgbtScene"
-          checked={lgbtScene}
+          checked={lGBTScene}
           onChange={(e) => setLgbtScene(e.target.checked)}
         />
         <label htmlFor="lgbtScene">

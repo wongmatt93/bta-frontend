@@ -12,33 +12,36 @@ import RecommendationCard from "./RecommendationCard";
 import "./RecommendationPage.css";
 import { CSSTransition } from "react-transition-group";
 import "animate.css";
+import {
+  getAllCityDescriptions,
+  getCityByName,
+} from "../services/cityDescriptionService";
+import CityDescription from "../models/CityDescriptions";
 
 const RecommendationPage = () => {
   const { user, votedOn, updateUserVotedOn } = useContext(AuthContext);
-  const [photo, setPhoto] = useState("");
-  const [cityInfo, setCityInfo] = useState<RoadGoatCity | null>(null);
-  const [moreCityInfo, setMoreCityInfo] = useState<RoadGoatCity | null>(null);
-  const [city, setCity] = useState<City | null>(null);
-  const [cities, setCities] = useState<City[]>([]);
+  const [cityInfo, setCityInfo] = useState<CityDescription | null>(null);
+  const [city, setCity] = useState<CityDescription | null>(null);
+  const [cities, setCities] = useState<CityDescription[]>([]);
   const [pageLoaded, setPageLoaded] = useState(false);
   const [cityLoaded, setCityLoaded] = useState(false);
 
-  const getAndSetCities = (country: string): Promise<void> =>
-    getCitiesByCountry(country).then((response) => {
+  const getAndSetCities = (): Promise<void> =>
+    getAllCityDescriptions().then((response) => {
       setCities(
         response.filter(
-          (item) => !votedOn.some((voted) => voted.cityName === item.name)
+          (item) => !votedOn.some((voted) => voted.cityName === item.cityName)
         )
       );
     });
 
   const handleClick = (favorite: boolean): void => {
     updateUserVotedOn(user!.uid, {
-      cityName: city!.name,
-      cityId: cityInfo!.id,
+      cityName: city!.cityName,
+      cityId: cityInfo!.cityId,
       uid: user!.uid,
       favorite: favorite,
-      photo,
+      photo: cityInfo!.photo,
     });
     setCityLoaded(false);
   };
@@ -48,7 +51,7 @@ const RecommendationPage = () => {
   }, []);
 
   useEffect(() => {
-    getAndSetCities("US");
+    getAndSetCities();
   }, [votedOn]);
 
   useEffect(() => {
@@ -58,64 +61,47 @@ const RecommendationPage = () => {
 
   useEffect(() => {
     city &&
-      getCityInfoByName(city.name).then((response) => {
-        if (response.data[0] === undefined) {
-          handleClick(false);
-          getAndSetCities("US");
-        } else if (response.data[0].attributes.destination_type === "State") {
-          setCityInfo(response.data[1]);
-          setPhoto(response.included[1].attributes.image!.full);
-        } else {
-          setCityInfo(response.data[0]);
-          setPhoto(response.included[0].attributes.image!.full);
-        }
+      getCityByName(city.cityName).then((response) => {
+        setCityInfo(response);
       });
     setCityLoaded(true);
   }, [city]);
 
-  useEffect(() => {
-    cityInfo &&
-      getCityInfoById(cityInfo.id).then((response) => {
-        setMoreCityInfo(response.data);
-      });
-  }, [cityInfo]);
-
   return (
     <main className="RecommendationPage">
-      {city && moreCityInfo && (
-        <>
-          <h2>Recommendations</h2>
-          <div className="mobile-view">
-            <CSSTransition
-              in={cityLoaded}
-              classNames={{
-                enterActive:
-                  "animate__animated animate__fadeIn animate__slower",
-                exitActive:
-                  "animate__animated animate__fadeOut animate__slower",
-              }}
-              timeout={2000}
-            >
-              <RecommendationCard
-                city={city}
-                info={moreCityInfo}
-                photo={photo}
-              />
-            </CSSTransition>
-            <div className="thumbs-container">
-              <i
-                className="fa-solid fa-thumbs-up thumbs-up"
-                onClick={() => handleClick(true)}
-              ></i>
-              <i
-                className="fa-solid fa-thumbs-up thumbs-down"
-                onClick={() => handleClick(false)}
-              ></i>
+      {cityInfo &&
+        (cities.length > 0 ? (
+          <>
+            <h2>Recommendations</h2>
+            <div className="mobile-view">
+              <CSSTransition
+                in={cityLoaded}
+                classNames={{
+                  enterActive:
+                    "animate__animated animate__fadeIn animate__slower",
+                  exitActive:
+                    "animate__animated animate__fadeOut animate__slower",
+                }}
+                timeout={2000}
+              >
+                <RecommendationCard city={cityInfo} />
+              </CSSTransition>
+              <div className="thumbs-container">
+                <i
+                  className="fa-solid fa-thumbs-up thumbs-up"
+                  onClick={() => handleClick(true)}
+                ></i>
+                <i
+                  className="fa-solid fa-thumbs-up thumbs-down"
+                  onClick={() => handleClick(false)}
+                ></i>
+              </div>
             </div>
-          </div>
-          <CityDetails id={cityInfo!.id} />
-        </>
-      )}
+            <CityDetails city={cityInfo.cityName} />
+          </>
+        ) : (
+          <h2 className="out-text">You're out of cities!</h2>
+        ))}
     </main>
   );
 };

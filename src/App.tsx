@@ -32,10 +32,10 @@ function App() {
           <Route path="/preferences" element={<PreferencesPage />} />
           <Route path="/recommendations" element={<RecommendationPage />} />
           <Route
-            path="/recommendations/:id/details"
+            path="/recommendations/:name/details"
             element={<CityDetailsPage />}
           />
-          <Route path="/city-details/:id/" element={<CityDetailsPage />} />
+          <Route path="/city-details/:name/" element={<CityDetailsPage />} />
           <Route path="/favorites" element={<FavoritesPage />} />
           <Route path="/plan-your-trip/:id" element={<PlanningPage />} />
           <Route path="/user-profile" element={<UserProfile />} />

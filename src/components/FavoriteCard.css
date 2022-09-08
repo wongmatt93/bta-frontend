@@ -1,6 +1,7 @@
 .FavoriteCard {
   width: 85%;
-  max-width: 232px;
+  width: 75%;
+  max-width: 300px;
   display: flex;
   flex-direction: column;
   align-items: center;

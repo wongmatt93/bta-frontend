@@ -26,12 +26,12 @@ const LandingPage = () => {
       <div className="logo-container">
         <img src="/assets/bta-logo.svg" className="logo" />
         <h2>
-          Plan Your <span>Dream</span> Vacation
+          Plan Your <span className="animated hinge">Dream</span> Vacation
         </h2>
       </div>
 
       <div className="button-p-container">
-        <p>You're gunna have a bad time.</p>
+        <p>We make the plan. You pack your bags.</p>
         <div className="sign-in-button-container">
           <button className="sign-in-button" onClick={signInWithGoogle}>
             Sign in with Google

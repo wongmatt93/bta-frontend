@@ -11,7 +11,7 @@ const FavoriteCard = ({ favorite, remove }: Props) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate(`/city-details/${favorite!.cityId}/`);
+    navigate(`/city-details/${favorite!.cityName}/`);
   };
 
   return (
