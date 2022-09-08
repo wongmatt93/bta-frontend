@@ -2,14 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
 import CityDescription from "../models/CityDescriptions";
-import Preferences from "../models/Preferences";
-import SingleRoadGoatResponse from "../models/SingleRoadGoatResponse";
 import { getCityByName } from "../services/cityDescriptionService";
-import {
-  getCityInfoById,
-  getCityInfoByName,
-} from "../services/roadGoatService";
-import { getWikiSummary } from "../services/wikipediaService";
 import "./CityDetails.css";
 
 interface Props {
@@ -63,18 +56,27 @@ const CityDetails = ({ city }: Props) => {
             {votedOn.some((item) => {
               return item.cityId === details.cityId && item.favorite;
             }) && (
-              <button
-                onClick={() => navigate(`/plan-your-trip/${details.cityId}`)}
-              >
-                Get Itinerary
-              </button>
+              <>
+                <button
+                  onClick={() => navigate(`/plan-your-trip/${details.cityId}`)}
+                >
+                  Get Itinerary
+                </button>
+                <div
+                  className="back-button-container"
+                  onClick={() => navigate(-1)}
+                >
+                  <i className="fa-solid fa-angles-left"></i>
+                  <span>Back</span>
+                </div>
+              </>
             )}
             <img className="details-img" src={photo} alt={name} />
           </div>
           <div className="info-container">
             <div className="name-rating-container">
               {" "}
-              <h3>{name}</h3>
+              <h2>{name}</h2>
               <p className="rating-text">
                 <i className="fa-solid fa-star"></i>
                 {details.rating}
@@ -111,6 +113,7 @@ const CityDetails = ({ city }: Props) => {
                 })}
               </ul>
             )}
+
             {!votedOn.some((item) => {
               return item.cityId === details.cityId && item.favorite;
             }) && (

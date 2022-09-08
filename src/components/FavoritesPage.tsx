@@ -20,7 +20,8 @@ const FavoritesPage = () => {
       timeout={1000}
     >
       <main className="FavoritesPage">
-        <h2>Favorites</h2>
+        <h2>Select a city to begin.</h2>
+        <i className="fa-solid fa-angle-down"></i>
         <FavoritesList />
       </main>
     </CSSTransition>

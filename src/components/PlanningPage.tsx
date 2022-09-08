@@ -131,7 +131,7 @@ const PlanningPage = () => {
 
   return (
     <main className="PlanningPage">
-      <h2>Please enter the dates for your trip</h2>
+      <h2>Choose your date to see your fate.</h2>
       <form onSubmit={(e) => handleSubmit(e)}>
         <label htmlFor="date1">Start Date</label>
         <input

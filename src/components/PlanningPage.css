@@ -8,6 +8,7 @@
 .PlanningPage h2 {
   width: 85%;
   text-align: center;
+  margin: 20px 20px;
 }
 
 .PlanningPage form {
@@ -26,6 +27,7 @@
   width: 100%;
   text-align: center;
   font-size: 50px;
+  margin: 20px;
 }
 
 .PlanningPage button {
@@ -37,6 +39,7 @@
   border: none;
   font-family: "Oswald", sans-serif;
   font-size: 24px;
+  margin: 20px;
 }
 
 .planning-page-modal h3 {
