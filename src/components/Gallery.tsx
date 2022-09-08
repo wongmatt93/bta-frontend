@@ -41,6 +41,7 @@ const Gallery = () => {
         });
       });
     }
+    closeModal();
   }
 
   return (
@@ -49,15 +50,16 @@ const Gallery = () => {
         Add Photos
       </button>
       <Modal
-        className="modal"
-        overlayClassName="overlay-modal"
+        className="gallery-modal"
+        overlayClassName="gallery-overlay-modal"
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         contentLabel="Example Modal"
       >
-        <form onSubmit={handleSubmit} className="choose-file-button">
+        <i className="fa-solid fa-xmark" onClick={closeModal}></i>
+        <form onSubmit={handleSubmit}>
           <input ref={fileInputRef} type="file" />
-          <button className="upload-button">Upload Pics!</button>
+          <button className="gallery-button">Upload Pics!</button>
         </form>
       </Modal>
 

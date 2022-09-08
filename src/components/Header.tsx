@@ -20,17 +20,24 @@ const Header = () => {
             <div className="right-nav-container">
               <Link to="/recommendations">
                 <li>
-                  <i className="fa-solid fa-earth-americas"></i>
+                  <span className="hover-text" data-hover="Recommendations">
+                    <i className="fa-solid fa-earth-americas"></i>
+                  </span>
                 </li>
               </Link>
               <Link to="/favorites">
                 <li>
-                  <i className="fa-solid fa-heart"></i>
+                  <span className="hover-text" data-hover="Favorites">
+                    <i className="fa-solid fa-heart"></i>
+                  </span>
                 </li>
               </Link>
               <Link to="/planned-trips">
                 <li>
-                  <i className="fa-solid fa-suitcase"></i>
+                  <span className="hover-text" data-hover="Planned Trips">
+                    {" "}
+                    <i className="fa-solid fa-suitcase"></i>
+                  </span>
                 </li>
               </Link>
             </div>

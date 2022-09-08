@@ -4,4 +4,11 @@
 
 .FavoritesPage h2 {
   font-size: 25px;
+  margin: 25px 25px 5px 25px;
+}
+
+.FavoritesPage i {
+  color: #f0b202;
+  font-size: 45px;
+  margin-bottom: 10px;
 }
